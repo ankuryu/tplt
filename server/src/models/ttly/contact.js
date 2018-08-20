@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
-module.exports = (sequelize, DataTypes) => {
-  const Contact= sequelize.define('contact',
+module.exports = (ttyseq, DataTypes) => {
+  const Contact= ttyseq.define('contact',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true

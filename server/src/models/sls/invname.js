@@ -1,18 +1,18 @@
 /* JSHINT ES6 VERSION */
-module.exports = (sequelize, DataTypes) => {
-  const Quotop = sequelize.define('quotop',
+module.exports = (salseq, DataTypes) => {
+  const Invname = salseq.define('quotop',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
     },
-    lcode:""
-    icode:""
-    desc:""
-    ddesc:""
+    lcode: DataTypes.STRING,
+    icode: DataTypes.STRING,
+    desc: DataTypes.STRING,
+    ddesc: DataTypes.STRING
    },
     { freezeTableName: true,
       timestamps: false
     }
   )
-  return Quotop
+  return Invname
 }

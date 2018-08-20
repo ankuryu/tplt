@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
-module.exports = (sequelize, DataTypes) => {
-  const Invsize = sequelize.define('invsize',
+module.exports = (salseq, DataTypes) => {
+  const Invsize = salseq.define('invsize',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true

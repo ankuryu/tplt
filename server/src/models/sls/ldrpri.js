@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
-module.exports = (sequelize, DataTypes) => {
-  const Quotop = sequelize.define('quotop',
+module.exports = (salseq, DataTypes) => {
+  const Quotop = salseq.define('Ldrpri',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false
     }
   )
-  return Quotop
+  return Ldrpri
 }
