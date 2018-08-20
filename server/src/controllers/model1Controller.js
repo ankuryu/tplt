@@ -4,10 +4,10 @@ const {
 
 module.exports = {
 
-  async index (req, res, next) {
+  async index(req, res, next) {
     try {
       let modelData = await model1.findAll({
-        attributes: []
+        attributes:[];
       })
       res.send(modelData)
     } catch (err) {
