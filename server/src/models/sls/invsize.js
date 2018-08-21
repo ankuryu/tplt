@@ -5,13 +5,13 @@ module.exports = (salseq, DataTypes) => {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
       },
-      lsize: DataTypes.STRING, 
-      asize: DataTypes.STRING, 
-      msize: DataTypes.STRING, 
+      lsize: DataTypes.STRING,
+      asize: DataTypes.STRING,
+      msize: DataTypes.STRING
     },
     { freezeTableName: true,
       timestamps: false
     }
   )
-  return Invsize 
+  return Invsize
 }
