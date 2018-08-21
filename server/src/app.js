@@ -1,8 +1,12 @@
-const express = require('express')
+/*const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
-const {sequelize} = require('./models')
+// const {sequelize} = require('./models')
+
+const { ttyseq } = require('./models')
+const { salseq } = require('./models')
+
 const config = require('./config/config')
 
 const app = express()
@@ -14,8 +18,15 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync({force: false})
+/*sequelize.sync({force: false})
   .then(() => {
+    app.listen(config.port)
+    console.log(`Server started on port ${config.port}`)
+  })
+  */
+  
+  ttyseq.sync({force: false})
+  .then(salseq.sync({force: false}) ).then(() => {
     app.listen(config.port)
     console.log(`Server started on port ${config.port}`)
   })
