@@ -1,5 +1,5 @@
 /* JSHINT ES6 VERSION */
-export default (salseq, DataTypes) => {
+module.exports = (salseq, DataTypes) => {
   const Invname = salseq.define('invname',
     {
       id: { type: DataTypes.INTEGER,

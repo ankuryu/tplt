@@ -6,7 +6,7 @@ module.exports = {
   async index(req, res, next) {
     try {
       let modelData = await invsize.findAll({
-        attributes:['asize']
+        attributes:['id','lsize','asize','msize']
       })
       res.send(modelData)
     } catch (err) {
@@ -46,6 +46,7 @@ module.exports = {
   async post (req, res, next) {
     try {
       var invsizedata = req.body
+	    console.log(invsize);
       resp = await invsize.create(req.body)
       res.send(resp)
     } catch (err) {
