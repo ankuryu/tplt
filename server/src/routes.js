@@ -16,8 +16,13 @@ module.exports = (app) => {
   app.post('/login',
     AuthenticationController.login)
 */
-  app.get('/model1',
+  app.get('/api/pri/asize',
     model1Controler.index)
+  app.get('/api/pri/asize/:asize',
+    model1Controler.index)
+  app.get('/api/pri/asize/:msize',
+    model1Controler.index)
+ 
   app.get('/model1/:qno',
     model1Controler.show)
   app.put('/model1/:qno',
