@@ -16,11 +16,11 @@ app.use(cors())
 
 // require('./passport')
 
-// require('./routes')(app)
+ require('./routes')(app)
 
 /* sequelize.sync({force: false})
   .then(() => {
-    app.listen(config.port)
+    app.listen(config.port
     console.log(`Server started on port ${config.port}`)
   })
   */

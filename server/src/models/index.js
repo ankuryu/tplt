@@ -19,10 +19,10 @@ fs
     file == '*.js' && file !== 'index.js'
   ).forEach((file) => {
     const model = salseq.import(path.join(__dirname + '/sls', file))
-    console.log(model)
+//    console.log(model)
     db[model.name] = model
   })
-console.log(Object.keys(db))
+//console.log(Object.keys(db))
   Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
@@ -44,7 +44,7 @@ fs
     file == '*.js' &&  file !== 'index.js'
   ).forEach((file) => {
     const model1 = ttyseq.import(path.join(__dirname + '/ttly', file))
-    console.log(model1)
+ //   console.log(model1)
     db[model1.name] = model1
   })
 
@@ -58,5 +58,5 @@ db.ttyseq = ttyseq
 
 db.Sequelize = Sequelize
 
-console.log(db.ttyseq)
+//console.log(db.ttyseq)
 module.exports = db

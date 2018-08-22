@@ -6,7 +6,7 @@ const HistoriesController = require('./controllers/HistoriesController')
 
 const isAuthenticated = require('./policies/isAuthenticated')
 */
-const model1Controler = require('./controllers/model1Controller.js')
+const invsizeController = require('./controllers/invsizeController.js');
 
 module.exports = (app) => {
   /*
@@ -16,21 +16,18 @@ module.exports = (app) => {
   app.post('/login',
     AuthenticationController.login)
 */
-  app.get('/api/pri/asize',
-    model1Controler.index)
+  app.get('/api/pri/size',
+    invsizeController.index);
   app.get('/api/pri/asize/:asize',
-    model1Controler.index)
-  app.get('/api/pri/asize/:msize',
-    model1Controler.index)
- 
-  app.get('/model1/:qno',
-    model1Controler.show)
-  app.put('/model1/:qno',
-    model1Controler.put)
-  app.post('/model1',
-    model1Controler.post)
-  app.delete('/model1/:qno',
-    model1Controler.remove)
+    invsizeController.showasize);
+  app.get('/api/pri/msize/:msize',
+    invsizeController.showmsize);
+  app.put('/api/pri/asize/:id',
+    invsizeController.put);
+  app.post('/api/pri/asize',
+    invsizeController.post);
+  app.delete('/api/pri/asize/:id',
+    invsizeController.remove);
 
   /*
   app.get('/bookmarks',
@@ -50,4 +47,4 @@ module.exports = (app) => {
     isAuthenticated,
     HistoriesController.post)
 	*/
-}
+};
