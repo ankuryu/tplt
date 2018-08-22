@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
 module.exports = (salseq, DataTypes) => {
-  const Ldrpri = salseq.define('Ldrpri',
+  const Ldrpri = salseq.define('ldrpri',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true

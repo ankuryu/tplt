@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
 export default (salseq, DataTypes) => {
-  const Invname = salseq.define('quotop',
+  const Invname = salseq.define('invname',
     {
       id: { type: DataTypes.INTEGER,
         primaryKey: true
