@@ -14,33 +14,33 @@ module.exports = {
       res.status(500).send({error: 'An Error has occuretd in fetching data from invname'})
     }
   },
-  async showasize (req, res, next) {
+  async showicode(req, res, next) {
     try {
-      var asize = req.params.asize
+      let icode = req.params.icode
       let response = await invname.findOne({
         where: {
-          'asize': asize 
+          'icode': icode 
         }
       })
       res.send(response)
       res.end('OK')
     } catch (err) {
-      res.status(500).send({error: 'An Error has occuretd in fetching data from invname asize'})
+      res.status(500).send({error: 'An Error has occuretd in fetching data from invname icode'})
     }
   },
-  async showmsize (req, res, next) {
+  async showlcode (req, res, next) {
     try {
-      var msize= req.params.msize
+      let lcode = req.params.lcode
       //  console.log(qid);
       let response = await invname.findOne({
         where: {
-          'mmsize': msize 
+          'lcode': lcode
         }
       })
       res.send(response)
       res.end('OK')
     } catch (err) {
-      res.status(500).send({error: 'An Error has occuretd in fetching data from invname mmsize'})
+      res.status(500).send({error: 'An Error has occuretd in fetching data from invname lcode'})
     }
   },
 

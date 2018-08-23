@@ -16,8 +16,8 @@ console.log('two')
 fs
   .readdirSync(path.join(__dirname + '/sls'))
   .filter((file) =>
-	  file == file
-//    file == '*.js' && file !== 'index.js'
+//	  file == file
+    path.extname(file) == '.js'
   ).forEach((file) => {
 	  console.log('file:',file);
     const model = salseq.import(path.join(__dirname + '/sls', file))
@@ -44,7 +44,8 @@ const ttyseq = new Sequelize(
 fs
   .readdirSync(path.join(__dirname + '/ttly'))
   .filter((file) =>
-	  file == file
+//	  file == file
+    path.extname(file) == '.js'  
 //    file == '*.js' &&  file !== 'index.js'
   ).forEach((file) => {
     const model1 = ttyseq.import(path.join(__dirname + '/ttly', file))

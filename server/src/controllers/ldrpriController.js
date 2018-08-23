@@ -6,49 +6,49 @@ const {
 module.exports = {
   async index(req, res, next) {
     try {
-      let modelData = await ldrrpri.findAll({
-        attributes:['id','lsize','asize','msize']
+      let modelData = await ldrpri.findAll({
+        attributes:['id']
       })
       res.send(modelData)
     } catch (err) {
       res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri'})
     }
   },
-  async showasize (req, res, next) {
+  async showicode(req, res, next) {
     try {
-      var asize = req.params.asize
-      let response = await ldrrpri.findOne({
+      let icode = req.params.icode
+      let response = await ldrpri.findOne({
         where: {
-          'asize': asize 
+          'icode': icode 
         }
       })
       res.send(response)
       res.end('OK')
     } catch (err) {
-      res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri asize'})
+      res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri icode'})
     }
   },
-  async showmsize (req, res, next) {
+  async showlcode(req, res, next) {
     try {
-      var msize= req.params.msize
+      let lcode = req.params.lcode
       //  console.log(qid);
-      let response = await ldrrpri.findOne({
+      let response = await ldrpri.findOne({
         where: {
-          'mmsize': msize 
+          'lcode': lcode
         }
       })
       res.send(response)
       res.end('OK')
     } catch (err) {
-      res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri mmsize'})
+      res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri lcode'})
     }
   },
 
   async post (req, res, next) {
     try {
-      var ldrrpridata = req.body
-	    console.log(ldrrpri);
-      resp = await ldrrpri.create(req.body)
+      var ldrpri= req.body
+	    console.log(ldrpri);
+      resp = await ldrpri.create(req.body)
       res.send(resp)
     } catch (err) {
       res.status(500).send({error: 'An Error has occured trying to create record ldrrpri'})
@@ -58,7 +58,7 @@ module.exports = {
     try {
       var qid = req.params.id;
       quote = req.body
-      await ldrrpri.update(req.body, {
+      await ldrpri.update(req.body, {
         where: {
           'id': qid
         }
@@ -72,7 +72,7 @@ module.exports = {
     try {
       let qid = req.params.id
       // console.log(qid);
-      await ldrrpri.destroy({
+      await ldrpri.destroy({
         where: {
           'id': qid
         }

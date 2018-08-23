@@ -1,4 +1,6 @@
 const invsizeController = require('./controllers/invsizeController.js');
+const invnameController = require('./controllers/invnameController.js');
+const ldrpriController = require('./controllers/ldrpriController.js');
 
 module.exports = (app) => {
   app.get('/api/pri/size',
@@ -15,29 +17,29 @@ module.exports = (app) => {
     invsizeController.remove);
 
 
-  app.get('/api/pri/asize',
+  app.get('/api/pri/invname',
     invnameController.index);
-  app.get('/api/pri/asize/:asize',
-    invnameController.showasize);
-  app.get('/api/pri/msize/:msize',
-    invnameController.showmsize);
-  app.put('/api/pri/asize/:id',
+  app.get('/api/pri/invname/icode/:icode',
+    invnameController.showicode);
+  app.get('/api/pri/invname/lcode/:lcode',
+    invnameController.showlcode);
+  app.put('/api/pri/invname/:id',
     invnameController.put);
-  app.post('/api/pri/asize',
+  app.post('/api/pri/invname',
     invnameController.post);
-  app.delete('/api/pri/asize/:id',
+  app.delete('/api/pri/invname/:id',
     invnameController.remove);
 
 
-  app.get('/api/pri/asize',
+  app.get('/api/pri/ldrpri',
     ldrpriController.index);
-  app.get('/api/pri/asize/:asize',
-    ldrpriController.showasize);
-  app.get('/api/pri/msize/:msize',
-    ldrpriController.showmsize);
-  app.put('/api/pri/asize/:id',
+  appget('/api/pri/ldrpri/icode/:icode',
+    ldrpriController.showicode);
+  app.get('/api/pri/ldrpri/lcode/:lcode',
+    ldrpriController.showlcode);
+  app.put('/api/pri/ldrpri/:id',
     ldrpriController.put);
-  app.post('/api/ldrpri
+  app.post('/api/ldrpri',
     ldrpriController.post);
   app.delete('/api/ldrpri/:id',
     ldrpriController.remove);
