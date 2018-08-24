@@ -3,7 +3,7 @@ const invnameController = require('./controllers/invnameController.js');
 const ldrpriController = require('./controllers/ldrpriController.js');
 
 module.exports = (app) => {
-  app.get('/api/pri/size',
+  app.get('/api/pri/asize',
     invsizeController.index);
   app.get('/api/pri/asize/:asize',
     invsizeController.showasize);
@@ -33,15 +33,15 @@ module.exports = (app) => {
 
   app.get('/api/pri/ldrpri',
     ldrpriController.index);
-  appget('/api/pri/ldrpri/icode/:icode',
+  app.get('/api/pri/ldrpri/icode/:icode',
     ldrpriController.showicode);
   app.get('/api/pri/ldrpri/lcode/:lcode',
     ldrpriController.showlcode);
   app.put('/api/pri/ldrpri/:id',
     ldrpriController.put);
-  app.post('/api/ldrpri',
+  app.post('/api/pri/ldrpri',
     ldrpriController.post);
-  app.delete('/api/ldrpri/:id',
+  app.delete('/api/pri/ldrpri/:id',
     ldrpriController.remove);
 
 };
