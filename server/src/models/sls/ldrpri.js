@@ -1,14 +1,14 @@
 /* JSHINT ES6 VERSION */
 module.exports = (salseq, DataTypes) => {
-  const Ldrpri = salseq.define('ldrpri',
+  const ldrpri = salseq.define('ldrpri',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
       },
-      Lcode: DataTypes.STRING,
-      Lsize: DataTypes.STRING,
+      lcode: DataTypes.STRING,
+      lsize: DataTypes.STRING,
       mmSize: DataTypes.STRING,
-      Rate: DataTypes.INTEGER,
+      rate: DataTypes.INTEGER,
       asize: DataTypes.STRING,
       icode: DataTypes.STRING,
       mrp: DataTypes.INTEGER
@@ -17,5 +17,5 @@ module.exports = (salseq, DataTypes) => {
       timestamps: false
     }
   )
-  return Ldrpri
+  return ldrpri
 }

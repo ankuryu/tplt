@@ -7,7 +7,7 @@ module.exports = {
   async index(req, res, next) {
     try {
       let modelData = await ldrpri.findAll({
-        attributes:['id']
+        attributes:['id','mrp']
       })
       res.send(modelData)
     } catch (err) {
@@ -43,11 +43,10 @@ module.exports = {
       res.status(500).send({error: 'An Error has occuretd in fetching data from ldrrpri lcode'})
     }
   },
-
-  async post (req, res, next) {
+  async post(req, res, next) {
     try {
-      var ldrpri= req.body
-	    console.log(ldrpri);
+      var ldrpridata= req.body
+	    console.log(ldrpridata);
       resp = await ldrpri.create(req.body)
       res.send(resp)
     } catch (err) {
