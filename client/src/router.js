@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Stock from './views/stock.vue'
 
 Vue.use(Router)
 
@@ -20,6 +21,12 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/stock',
+      name: 'stock',
+      component: Stock
+//      component: () => import('./views/stock.vue')
     }
   ]
 })
