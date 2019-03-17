@@ -33,7 +33,7 @@ module.exports = {
       //  console.log(qid);
       let response = await invsize.findOne({
         where: {
-          'mmsize': msize 
+          'msize': msize 
         }
       })
       res.send(response)
