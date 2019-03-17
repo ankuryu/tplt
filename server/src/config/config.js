@@ -30,7 +30,7 @@ module.exports = {
       options: {
         dialect: process.env.DIALECT || 'sqlite',
         host: process.env.HOST || 'localhost',
-        storage: path.resolve(__dirname, '../../db/stk.db3')
+        storage: path.resolve(__dirname, '../../db/stk19.db3')
       }
     }
   }

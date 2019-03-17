@@ -1,6 +1,6 @@
 /* JSHINT ES6 VERSION */
 module.exports = (stkseq, DataTypes) => {
-  const stk = stkseq.define('stk',
+  const stk = stkseq.define('stock',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
