@@ -12,7 +12,7 @@ const salseq = new Sequelize(
   config.password,
   config.sls.db.options
 )
-console.log('two')
+console.log('sls')
 fs
   .readdirSync(path.join(__dirname + '/sls'))
   .filter((file) =>
@@ -23,7 +23,7 @@ fs
     const model = salseq.import(path.join(__dirname + '/sls', file))
     db[model.name] = model
 
-    console.log(model)
+    console.log('sls model ',model)
   })
 //console.log(Object.keys(db))
   Object.keys(db).forEach(function (modelName) {
@@ -41,6 +41,7 @@ const ttyseq = new Sequelize(
   config.tty.db.options
 )
 
+console.log('ttly')
 fs
   .readdirSync(path.join(__dirname + '/ttly'))
   .filter((file) =>
@@ -49,7 +50,7 @@ fs
 //    file == '*.js' &&  file !== 'index.js'
   ).forEach((file) => {
     const model1 = ttyseq.import(path.join(__dirname + '/ttly', file))
- //   console.log(model1)
+   console.log('ttly model : ',model1)
     db[model1.name] = model1
   })
 
@@ -61,6 +62,33 @@ Object.keys(db).forEach(function (modelName) {
 
 db.ttyseq = ttyseq
 
+const stkseq = new Sequelize(
+  config.stk.db.database,
+  config.user,
+  config.password,
+  config.stk.db.options
+)
+console.log('stk')
+fs
+  .readdirSync(path.join(__dirname + '/stk'))
+  .filter((file) =>
+//	  file == file
+    path.extname(file) == '.js'
+  ).forEach((file) => {
+	  console.log('stk file:',file);
+    const model = stkseq.import(path.join(__dirname + '/stk', file))
+    db[model.name] = model
+
+    console.log('model: ',model)
+  })
+//console.log(Object.keys(db))
+  Object.keys(db).forEach(function (modelName) {
+  if ('associate' in db[modelName]) {
+    db[modelName].associate(db)
+  }
+})  
+
+db.stkseq = stkseq
 db.Sequelize = Sequelize
 
 //console.log(db.ttyseq)

@@ -23,6 +23,16 @@ module.exports = {
         storage: path.resolve(__dirname, '../../db/ttly.db3')
       }
     }
+  },
+  stk: {
+    db: {
+      database: process.env.DB_NAME || 'stk.db3',
+      options: {
+        dialect: process.env.DIALECT || 'sqlite',
+        host: process.env.HOST || 'localhost',
+        storage: path.resolve(__dirname, '../../db/stk.db3')
+      }
+    }
   }
   /*,
   authentication: {

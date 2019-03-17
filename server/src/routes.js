@@ -1,8 +1,10 @@
 const invsizeController = require('./controllers/invsizeController.js');
 const invnameController = require('./controllers/invnameController.js');
 const ldrpriController = require('./controllers/ldrpriController.js');
+const stkController = require('./controllers/stkController.js');
 
 module.exports = (app) => {
+  // routes regarding asize 
   app.get('/api/pri/asize',
     invsizeController.index);
   app.get('/api/pri/asize/:asize',
@@ -16,7 +18,7 @@ module.exports = (app) => {
   app.delete('/api/pri/asize/:id',
     invsizeController.remove);
 
-
+  // routes regarding invname
   app.get('/api/pri/invname',
     invnameController.index);
   app.get('/api/pri/invname/icode/:icode',
@@ -30,7 +32,7 @@ module.exports = (app) => {
   app.delete('/api/pri/invname/:id',
     invnameController.remove);
 
-
+  // routes regarding ldrpri
   app.get('/api/pri/ldrpri',
     ldrpriController.index);
   app.get('/api/pri/ldrpri/icode/:icode',
@@ -43,7 +45,14 @@ module.exports = (app) => {
     ldrpriController.post);
   app.delete('/api/pri/ldrpri/:id',
     ldrpriController.remove);
+  // routes regarding stk
 
+  app.get('/api/stk/', stkController.index);
+  app.get('/api/stk/:mfg/:icode/:asize', stkController.showmcs);
+  app.get('/api/stk/:pg', stkController.showpg);
+  app.post('/api/stk', stkController.post);
+  app.put('/api/stk/:id', stkController.put);
+  app.delete('/api/stk/:id', stkController.remove);
 };
 
 
@@ -56,7 +65,7 @@ const HistoriesController = require('./controllers/HistoriesController')
 const isAuthenticated = require('./policies/isAuthenticated')
 */
 
-  /*
+/*
   app.post('/register',
     AuthenticationControllerPolicy.register,
     AuthenticationController.register)
@@ -64,7 +73,7 @@ const isAuthenticated = require('./policies/isAuthenticated')
     AuthenticationController.login)
 */
 
-  /*
+/*
   app.get('/bookmarks',
     isAuthenticated,
     BookmarksController.index)
