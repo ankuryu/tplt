@@ -1,12 +1,12 @@
 //ldrpriController.js
 const {
- stk 
+ stock 
 } = require('../models');
 
 module.exports = {
   async index (req, res, next) {
     try {
-      let modelData = await stk.findAll({
+      let modelData = await stock.findAll({
      offset:0,limit:10 
       })
       res.send(modelData)
@@ -19,7 +19,7 @@ module.exports = {
       let mfg = req.params.mfg
       let icode = req.params.icode
       let asize = req.params.asize
-      let response = await stk.findAll({
+      let response = await stock.findAll({
         where: {
           'mfg': mfg,
           'icode': icode ,
@@ -36,7 +36,7 @@ module.exports = {
     try {
       let pg = req.params.pg
       //  console.log(qid);
-      let response = await stk.findAll({
+      let response = await stock.findAll({
         where: {
           'pg': pg
         }
@@ -50,8 +50,9 @@ module.exports = {
   async post(req, res, next) {
     try {
       var stkdata= req.body
-	    console.log(stkdata);
-      resp = await stk.create(req.body)
+      console.log("Stock DB3 :",stock)
+	    console.log("Add Stock Data ",stkdata);
+      resp = await stock.create(req.body)
       res.send(resp)
     } catch (err) {
       res.status(500).send({error: 'An Error has occured trying to create record in stk'})
@@ -61,7 +62,7 @@ module.exports = {
     try {
       var qid = req.params.id;
       stkdata= req.body
-      await stk.update(req.body, {
+      await stock.update(req.body, {
         where: {
           'id': qid
         }

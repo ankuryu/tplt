@@ -83,7 +83,7 @@ fs
     const model = stkseq.import(path.join(__dirname + '/stk', file))
     db[model.name] = model
 
-    console.log('stk model: ', model)
+    console.log('stk model: ', model.name)
   })
 //console.log(Object.keys(db))
 Object.keys(db).forEach(function (modelName) {
