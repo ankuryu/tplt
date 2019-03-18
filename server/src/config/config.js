@@ -26,7 +26,7 @@ module.exports = {
   },
   stk: {
     db: {
-      database: process.env.DB_NAME || 'stk.db3',
+      database: process.env.DB_NAME || 'stk19.db3',
       options: {
         dialect: process.env.DIALECT || 'sqlite',
         host: process.env.HOST || 'localhost',

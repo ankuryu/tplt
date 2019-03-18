@@ -2,11 +2,10 @@
   <div class="stock">
     <h1>{{ msg }}</h1>
     <input type="text" v-model="stkd.mfg" placeholder="MFG">
-    <br>
     <input type="text" v-model="stkd.icode" placeholder="ICODE">
     <input type="text" v-model="stkd.asize" placeholder="ASIZE">
     <input type="text" v-model="stkd.qty" placeholder="QTY">
-    <input type="text" v-model="stkd.location" placeholder="LOCATION">
+    <input type="text" v-model="stkd.loc" placeholder="LOCATION">
     <input type="text" v-model="stkd.pg" placeholder="PAGE">
     <button @click="sndData">Send</button>
   </div>
@@ -26,14 +25,14 @@ export default {
         icode:"",
         asize:"",
         qty:0,
-        location:"",
+        loc:"",
         pg:""
       }
     }
   },
   methods:{
     sndData: function(){
-      axios.post('/localhost:8000/api/stk',this.stkd)
+      axios.post('http://localhost:8000/api/stk',this.stkd)
       .then()
       .catch()
     }

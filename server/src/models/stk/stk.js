@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
 /* JSHINT ES6 VERSION */
 module.exports = (stkseq, DataTypes) => {
   const stk = stkseq.define('stock',
@@ -9,7 +11,7 @@ module.exports = (stkseq, DataTypes) => {
       icode: DataTypes.STRING,
       asize: DataTypes.STRING,
       qty: DataTypes.INTEGER,
-      page: DataTypes.INTEGER,
+      pg: DataTypes.INTEGER,
       loc: DataTypes.STRING,
       dt: DataTypes.STRING
     },
