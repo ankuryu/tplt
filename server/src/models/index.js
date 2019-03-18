@@ -1,3 +1,7 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable no-path-concat */
+/* eslint-disable eqeqeq */
 // { "parserOptions": { "ecmaVersion": 6 } }
 
 const fs = require('fs')
@@ -16,21 +20,21 @@ console.log('sls')
 fs
   .readdirSync(path.join(__dirname + '/sls'))
   .filter((file) =>
-//	  file == file
+  //	  file == file
     path.extname(file) == '.js'
   ).forEach((file) => {
-	  console.log('file:',file);
+	  console.log('file:', file)
     const model = salseq.import(path.join(__dirname + '/sls', file))
     db[model.name] = model
 
-    console.log('sls model ',model)
+    console.log('sls model ', model)
   })
 //console.log(Object.keys(db))
-  Object.keys(db).forEach(function (modelName) {
+Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
   }
-})  
+})
 
 db.salseq = salseq
 
@@ -45,12 +49,12 @@ console.log('ttly')
 fs
   .readdirSync(path.join(__dirname + '/ttly'))
   .filter((file) =>
-//	  file == file
-    path.extname(file) == '.js'  
-//    file == '*.js' &&  file !== 'index.js'
+  //	  file == file
+    path.extname(file) == '.js'
+    //    file == '*.js' &&  file !== 'index.js'
   ).forEach((file) => {
     const model1 = ttyseq.import(path.join(__dirname + '/ttly', file))
-   console.log('ttly model : ',model1)
+    console.log('ttly model : ', model1)
     db[model1.name] = model1
   })
 
@@ -72,21 +76,21 @@ console.log('stk')
 fs
   .readdirSync(path.join(__dirname + '/stk'))
   .filter((file) =>
-//	  file == file
+  //	  file == file
     path.extname(file) == '.js'
   ).forEach((file) => {
-	  console.log('stk file:',file);
+	  console.log('stk file:', file)
     const model = stkseq.import(path.join(__dirname + '/stk', file))
     db[model.name] = model
 
-    console.log('model: ',model)
+    console.log('stk model: ', model)
   })
 //console.log(Object.keys(db))
-  Object.keys(db).forEach(function (modelName) {
+Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
   }
-})  
+})
 
 db.stkseq = stkseq
 db.Sequelize = Sequelize
