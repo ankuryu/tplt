@@ -77,13 +77,15 @@ export default {
       dsblflg : 1,
       opbtflg : 0,
       stkd: {
+        id:0,
         mfg:"",
         icode:"",
         asize:"",
         qty:0,
         loc:"",
         pg:""
-      }
+      },
+      stkds:[]
     }
   },
   methods:{
@@ -91,7 +93,85 @@ export default {
       axios.post('http://localhost:8000/api/stk',this.stkd)
       .then()
       .catch()
+    },
+      inirec : function() {
+   let ptr = this.rec ;
+   ptr.id = 0;
+   ptr.fname = '';
+   ptr.lname = "";
+   ptr.mbl = "";
+   ptr.street = "";
+   ptr.city = "";
+   ptr.pin = "";
+   ptr.country = "";
+  },
+  savit:function(){
+  debugger ;
+    let idx = this.rec.id ;
+    if (idx == 0){
+      this.recs.push({}) ;
+      idx = this.recs.length - 1 ;
+      this.rec.id = idx ;
     }
+    this.trsftoar(idx)   
+    this.dsblflg = 1 ;
+    this.opbtflg = 0 ;
+
+  },
+  cancit:function(){},
+  trsftoar: function(idx){
+   let tmp = this.recs[idx] ;
+   let r = this.rec ;
+   tmp.id =  r.id ;
+   tmp.fname = r.fname;
+   tmp.lname = r.lname;
+   tmp.mbl = r.mbl;
+   tmp.street = r.street;
+   tmp.city = r.city;
+   tmp.pin = r.pin;
+   tmp.country = r.country;
+  },
+  trsffrar : function(idx){
+   let tmp = this.recs[idx] ;
+   let r = this.rec ;
+   r.id =  tmp.id ;
+   r.fname = tmp.fname;
+   r.lname = tmp.lname;
+   r.mbl = tmp.mbl;
+   r.street = tmp.street;
+   r.city = tmp.city;
+   r.pin = tmp.pin;
+   r.country = tmp.country;
+  
+  },
+  addrec: function(){
+   console.log("Adding..")
+   this.inirec();
+   this.dsblflg = 0 ;
+   this.opbtflg = 1 ;
+   
+  },
+  edirec: function(){
+   console.log("Editing..")
+   this.dsblflg = 0 ;
+   this.opbtflg = 1 ;
+
+  },
+  delrec: function(){
+   console.log("Deleting..")
+  },
+  putrecs: function(){
+   console.log("Putting..")
+   let mx = this.recs.length ;
+   for (i= 0; i<mx ;i++) {
+    tmprec = recs[1]
+    axios.post('http://localhost/addr/api/add/'+tmprec.id,tmprec).then(function(resp){}).catch(function(err){})
+   }
+  },
+  getrecs: function(){
+   console.log("Getting..")
+   axio.get('http://localhost/addr/api/lst10').then(function(res){}).catch(function(err){})
+  }
   }
 }  
 </script>
