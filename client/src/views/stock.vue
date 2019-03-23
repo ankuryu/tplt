@@ -14,7 +14,7 @@
     <div class="tblpg">Page</div>
     <div class="tbldt">Date</div>
     <div class="tblsel">Sel</div>
-    <template v-for="(irec,index) in recs">
+    <template v-for="(irec,index) in stkds">
       <div class="tblsr">{{index+1}}</div>
       <div class="tblmfg">{{irec.mfg}}</div>
       <div class="tblicode">{{irec.icode}}</div>
@@ -23,7 +23,7 @@
       <div class="tblloc">{{irec.loc}}</div>
       <div class="tblpg">{{irec.pg}}</div>
       <div class="tbldt">{{irec.dt}}</div>
-      <div class="tblsel"><input type="radio" v-model="sel" :value="index" @click="trsffrar(index)"></div>
+      <div class="tblsel"><input type="radio" v-model="sel" :value="irec.id" @click="trsffrar(index)"></div>
     </template>
   </div>
   <hr>
@@ -32,17 +32,15 @@
   </h3>
  
   <div class="inpcont">
- 
-    <div class="mfg"><input type="text" v-model="stkd.mfg" placeholder="Mfg " :disabled="dsblflg == 1"></div>
-    <div class="icode"><input type="text" v-model="stkd.icode" placeholder="Icode" :disabled="dsblflg == 1"></div>
-    <div class="asize"><input type="text" v-model="stkd.asize" placeholder="Asize" :disabled="dsblflg == 1" ></div>
-    <div class="qty"><input type="text" v-model="stkd.qty" placeholder="Qty" :disabled="dsblflg == 1"></div>
-    <div class="loc"><input type="text" v-model="stkd.loc" placeholder="Location" :disabled="dsblflg == 1"></div>
-    <div class="pg"><input type="text" v-model="stkd.pg" placeholder="Page" :disabled="dsblflg == 1"> </div>
-    <div class="dt"><input type="text" v-model="stkd.dt" placeholder="Date" :disabled="dsblflg == 1"></div>
+    <div class="mfg"><input type="text" v-model="stkd.mfg" placeholder="Mfg " size="5" :disabled="dsblflg == 1"></div>
+    <div class="icode"><input type="text" v-model="stkd.icode" placeholder="Icode"  size="15" :disabled="dsblflg == 1"></div>
+    <div class="asize"><input type="text" v-model="stkd.asize" placeholder="Asize"  size="3" :disabled="dsblflg == 1" ></div>
+    <div class="qty"><input type="text" v-model="stkd.qty" placeholder="Qty"  size="5" :disabled="dsblflg == 1"></div>
+    <div class="loc"><input type="text" v-model="stkd.loc" placeholder="Location"  size="15" :disabled="dsblflg == 1"></div>
+    <div class="pg"><input type="text" v-model="stkd.pg" placeholder="Page"  size="5" :disabled="dsblflg == 1"> </div>
+    <div class="dt"><input type="text" v-model="stkd.dt" placeholder="Date"  size="13" :disabled="dsblflg == 1"></div>
     <div class="save"><button @click="savit" :disabled="dsblflg == 1">Save</button></div>
     <div class="canc"><button @click="cancit" :disabled="dsblflg == 1">Cancel</button></div>
-
   </div>
   <hr>
   <div class="oprcont">
@@ -76,6 +74,9 @@ export default {
       sel:0,
       dsblflg : 1,
       opbtflg : 0,
+      maxrec : 0,
+      offst:0,
+      lmt:0,
       stkd: {
         id:0,
         mfg:"",
@@ -89,6 +90,30 @@ export default {
     }
   },
   methods:{
+    nxtPage: function(){
+      this.offst++;
+      if(this.offst*this.lmt > maxrec){
+        this.offst--;
+      }
+      this.getrecs();
+    },
+    prvPage: function(){
+      this.offst--;
+      if(this.offst < 0 ){
+        this.offst++;
+      }
+      this.getrecs();
+    },
+    getMaxrecs: function(){
+       axios.get('http://localhost:8000/api/mxrcs',this.maxrec)
+       .then()
+       .catch()
+    },
+    getRecs: function(){
+      axios.get('http://localhost:8000/api/getrc/:lmt/:off',this.stkds)
+      .then()
+      .catch()
+    },
     sndData: function(){
       axios.post('http://localhost:8000/api/stk',this.stkd)
       .then()
@@ -97,13 +122,13 @@ export default {
       inirec : function() {
    let ptr = this.rec ;
    ptr.id = 0;
-   ptr.fname = '';
-   ptr.lname = "";
-   ptr.mbl = "";
-   ptr.street = "";
-   ptr.city = "";
-   ptr.pin = "";
-   ptr.country = "";
+   ptr.mfg = '';
+   ptr.icode= "";
+   ptr.asize= "";
+   ptr.qty= 0;
+   ptr.pg= 0;
+   ptr.loc= "";
+   ptr.dt= "";
   },
   savit:function(){
   debugger ;
@@ -116,33 +141,31 @@ export default {
     this.trsftoar(idx)   
     this.dsblflg = 1 ;
     this.opbtflg = 0 ;
-
   },
   cancit:function(){},
   trsftoar: function(idx){
    let tmp = this.recs[idx] ;
    let r = this.rec ;
    tmp.id =  r.id ;
-   tmp.fname = r.fname;
-   tmp.lname = r.lname;
-   tmp.mbl = r.mbl;
-   tmp.street = r.street;
-   tmp.city = r.city;
-   tmp.pin = r.pin;
-   tmp.country = r.country;
+   tmp.mfg = r.mfg;
+   tmp.icode = r.icode;
+   tmp.asize = r.asize;
+   tmp.qty = r.qty;
+   tmp.pg = r.pg;
+   tmp.loc = r.loc;
+   tmp.dt = r.dt;
   },
   trsffrar : function(idx){
    let tmp = this.recs[idx] ;
    let r = this.rec ;
    r.id =  tmp.id ;
-   r.fname = tmp.fname;
-   r.lname = tmp.lname;
-   r.mbl = tmp.mbl;
-   r.street = tmp.street;
-   r.city = tmp.city;
-   r.pin = tmp.pin;
-   r.country = tmp.country;
-  
+   r.mfg = tmp.mfg;
+   r.icode = tmp.icode;
+   r.asize = tmp.asize;
+   r.qty = tmp.qty;
+   r.pg = tmp.pg;
+   r.loc = tmp.loc;
+   r.dt = tmp.dt;
   },
   addrec: function(){
    console.log("Adding..")
