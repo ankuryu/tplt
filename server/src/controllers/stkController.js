@@ -1,12 +1,15 @@
 //ldrpriController.js
 const {
- stock 
+ stock,Sequelize
 } = require('../models');
 
 module.exports = {
   async maxRecs (req,res,next){
     try{
-      let mx = await stock.query('select sum(1) from stock')
+      let mx = await stock.findAll({
+        attributes:[[ Sequelize.fn('sum',1),'max']]
+      })
+        res.send(mx[0]);
     }
     catch(err) {
       console.log("Error in maxRecs ",err )

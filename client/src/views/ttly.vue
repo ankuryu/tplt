@@ -10,12 +10,11 @@
     <div class="tblmbl">Mobile</div>
     <div class="tblsel">Sel</div>
     <template v-for="(irec,index) in recs">
-    <div class="tblsr">{{index+1}}</div>
-    <div class="tblfnam">{{irec.fname}}</div>
-    <div class="tbllnam">{{irec.lname}}</div>
-    <div class="tblmbl">{{irec.mbl}}</div>
-    <div class="tblsel"><input type="radio" v-model="sel" :value="index" @click="trsffrar(index)"></div>
-      
+      <div class="tblsr">{{index+1}}</div>
+      <div class="tblfnam">{{irec.fname}}</div>
+      <div class="tbllnam">{{irec.lname}}</div>
+      <div class="tblmbl">{{irec.mbl}}</div>
+      <div class="tblsel"><input type="radio" v-model="sel" :value="index" @click="trsffrar(index)"></div>
     </template>
   </div>
   <hr>
