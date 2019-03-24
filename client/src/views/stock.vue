@@ -89,6 +89,12 @@ export default {
       stkds:[]
     }
   },
+  created: function(){
+    console.log("Created")
+    this.lmt = 10 ;
+    getMaxrecs();
+    this.offst = Math.floor(this.maxrec/this.lmt) ;
+  },
   methods:{
     nxtPage: function(){
       this.offst++;
@@ -102,22 +108,34 @@ export default {
       if(this.offst < 0 ){
         this.offst++;
       }
-      this.getrecs();
+      this.getRecs();
     },
     getMaxrecs: function(){
-       axios.get('http://localhost:8000/api/mxrcs',this.maxrec)
-       .then()
-       .catch()
+       axios.get('http://localhost:8000/api/stk/mxrcs',this.maxrec)
+      .then((response)=>{
+        this.maxrec= response
+      })
+      .catch(function (err){
+        console.log(err)
+      })
     },
     getRecs: function(){
       axios.get('http://localhost:8000/api/getrc/:lmt/:off',this.stkds)
-      .then()
-      .catch()
+      .then((response)=>{
+        this.stkds = response
+      })
+      .catch(function (err){
+        console.log(err)
+      })
     },
     sndData: function(){
       axios.post('http://localhost:8000/api/stk',this.stkd)
-      .then()
-      .catch()
+      .then((response)=>{
+        //this.stkds = response
+      })
+      .catch(function (err){
+        console.log(err)
+      })
     },
       inirec : function() {
    let ptr = this.rec ;
@@ -188,12 +206,16 @@ export default {
    let mx = this.recs.length ;
    for (i= 0; i<mx ;i++) {
     tmprec = recs[1]
-    axios.post('http://localhost/addr/api/add/'+tmprec.id,tmprec).then(function(resp){}).catch(function(err){})
+    axios.post('http://localhost/'+tmprec.id,tmprec)
+    .then(function(resp){})
+    .catch(function(err){console.log(err)})
    }
   },
   getrecs: function(){
    console.log("Getting..")
-   axio.get('http://localhost/addr/api/lst10').then(function(res){}).catch(function(err){})
+   axios.get('http://localhost/')
+   .then(function(res){})
+   .catch(function(err){console.log(err)})
   }
   }
 }  
@@ -222,7 +244,7 @@ body {
   display: grid;
   background-color: lightgray;
   grid-gap: 5px;
-  grid-template-columns: 25px 1fr 1fr 1fr 1fr 21fr 1fr 1fr 25px;
+  grid-template-columns: 25px 1fr 1fr 1fr 1fr 2fr 1fr 1fr 25px;
 }
 
 .tblsr {
@@ -268,7 +290,7 @@ body {
   display: grid;
   background-color: lightcyan;
   grid-gap: 3px;
-  grid-template-areas: " mfg icode asize qty" " loc pg dt"  " . save canc";
+  grid-template-areas: " mfg icode asize qty" " loc pg dt ."  " . . save canc";
 }
 
 .mfg{

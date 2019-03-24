@@ -47,7 +47,8 @@ module.exports = (app) => {
     ldrpriController.remove);
   // routes regarding stk
 
-  app.get('/api/stk/', stkController.index);
+  app.get('/api/stk/:ofst/:lmt', stkController.index);
+  app.get('/api/stk/mxrcs', stkController.maxRecs);
   app.get('/api/stk/:mfg/:icode/:asize', stkController.showmcs);
   app.get('/api/stk/:pg', stkController.showpg);
   app.post('/api/stk', stkController.post);

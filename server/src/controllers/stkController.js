@@ -4,10 +4,20 @@ const {
 } = require('../models');
 
 module.exports = {
+  async maxRecs (req,res,next){
+    try{
+      let mx = await stock.query('select sum(1) from stock')
+    }
+    catch(err) {
+      console.log("Error in maxRecs ",err )
+    }
+  },
   async index (req, res, next) {
+    let ofst = req.params.ofst ;
+    let lmt = req.params.lmt;
     try {
       let modelData = await stock.findAll({
-     offset:0,limit:10 
+     offset:ofst,limit:lmt
       })
       res.send(modelData)
     } catch (err) {
