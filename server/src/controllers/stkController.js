@@ -10,6 +10,7 @@ module.exports = {
         attributes:[[ Sequelize.fn('sum',1),'max']]
       })
         res.send(mx[0]);
+        console.log(mx[0]);
     }
     catch(err) {
       console.log("Error in maxRecs ",err )

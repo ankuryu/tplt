@@ -92,7 +92,7 @@ export default {
   created: function(){
     console.log("Created")
     this.lmt = 10 ;
-    getMaxrecs();
+    this.getMaxrecs();
     this.offst = Math.floor(this.maxrec/this.lmt) ;
   },
   methods:{
@@ -113,7 +113,7 @@ export default {
     getMaxrecs: function(){
        axios.get('http://localhost:8000/api/stk/mxrcs',this.maxrec)
       .then((response)=>{
-        this.maxrec= response
+        this.maxrec= response.max 
       })
       .catch(function (err){
         console.log(err)
