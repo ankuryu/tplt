@@ -11,6 +11,7 @@ module.exports = {
       })
         res.send(mx[0]);
         console.log(mx[0]);
+        res.end('200')
     }
     catch(err) {
       console.log("Error in maxRecs ",err )

@@ -111,13 +111,21 @@ export default {
       this.getRecs();
     },
     getMaxrecs: function(){
-       axios.get('http://localhost:8000/api/stk/mxrcs',this.maxrec)
+       console.log("starting getMaxrecs")
+       axios.get('http://localhost:8000/api/stk/mxrcs')//,this.maxrec
       .then((response)=>{
-        this.maxrec= response.max 
+        console.log("response -> ",response.data)
+        console.log("status-> ",response.status)
+        console.log("statusText-> ",response.statusText)
+        console.log("headers-> ",response.headers)
+        console.log("config-> ",response.config)
+        this.maxrec= response.data.max 
       })
       .catch(function (err){
+        console.log("In  error loop of getMaxrecs")
         console.log(err)
       })
+      console.log("Over getMaxrecs")
     },
     getRecs: function(){
       axios.get('http://localhost:8000/api/getrc/:lmt/:off',this.stkds)
