@@ -23,9 +23,12 @@
       <div class="tblloc">{{irec.loc}}</div>
       <div class="tblpg">{{irec.pg}}</div>
       <div class="tbldt">{{irec.dt}}</div>
-      <div class="tblsel"><input type="radio" v-model="sel" :value="irec.id" @click="trsffrar(index)"></div>
+      <div class="tblsel"><input type="radio" v-model="sel" :value="irec.id" @change="trsffrar(index)"></div>
     </template>
   </div>
+  <button @click="prvPage">Prev</button> 
+  <span> Page: {{this.offst}} </span>
+  <button @click="nxtPage">Next</button>
   <hr>
   <h3 class="hdginp">
     Input Data
@@ -94,31 +97,32 @@ export default {
     this.lmt = 10 ;
     this.getMaxrecs();
     this.offst = Math.floor(this.maxrec/this.lmt) ;
+    this.getRecs(this.offst,this.lmt);
   },
   methods:{
     nxtPage: function(){
       this.offst++;
-      if(this.offst*this.lmt > maxrec){
+      if(this.offst*this.lmt > this.maxrec){
         this.offst--;
       }
-      this.getrecs();
+      this.getRecs(this.offst,this.lmt);
     },
     prvPage: function(){
       this.offst--;
       if(this.offst < 0 ){
         this.offst++;
       }
-      this.getRecs();
+      this.getRecs(this.offst,this.lmt);
     },
     getMaxrecs: function(){
        console.log("starting getMaxrecs")
        axios.get('http://localhost:8000/api/stk/mxrcs')//,this.maxrec
       .then((response)=>{
-        console.log("response -> ",response.data)
+/*        console.log("response -> ",response.data)
         console.log("status-> ",response.status)
         console.log("statusText-> ",response.statusText)
         console.log("headers-> ",response.headers)
-        console.log("config-> ",response.config)
+        console.log("config-> ",response.config) */
         this.maxrec= response.data.max 
       })
       .catch(function (err){
@@ -127,10 +131,10 @@ export default {
       })
       console.log("Over getMaxrecs")
     },
-    getRecs: function(){
-      axios.get('http://localhost:8000/api/getrc/:lmt/:off',this.stkds)
+    getRecs: function(of,lm){
+      axios.get('http://localhost:8000/api/stk/'+  String(of*lm) +'/'+ String(lm) )
       .then((response)=>{
-        this.stkds = response
+        this.stkds = response.data
       })
       .catch(function (err){
         console.log(err)
@@ -182,6 +186,8 @@ export default {
    tmp.dt = r.dt;
   },
   trsffrar : function(idx){
+    alert("the id is "+ String(this.sel))
+    return
    let tmp = this.recs[idx] ;
    let r = this.rec ;
    r.id =  tmp.id ;
@@ -250,8 +256,9 @@ body {
 
 .tblcont {
   display: grid;
-  background-color: lightgray;
-  grid-gap: 5px;
+  background-color: lightblue;
+  /*grid-gap: 1px;*/
+  gap: 2px ;
   grid-template-columns: 25px 1fr 1fr 1fr 1fr 2fr 1fr 1fr 25px;
 }
 
