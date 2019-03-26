@@ -50,18 +50,9 @@
     <div class="add"><button @click="addrec" :disabled = "opbtflg == 1">Add</button></div>
     <div class="edit"><button @click="edirec" :disabled = "opbtflg == 1" >Edit</button></div>
     <div class="del"><button @click="delrec" :disabled = "opbtflg == 1">Delete</button></div>
-    <div class="upload"><button @click="putrecs" :disabled = "opbtflg == 1">Upoad</button></div>
-    <div class="dwnload"><button @click="getrecs" :disabled = "opbtflg == 1">Download</button></div>
+    <!-- <div class="upload"><button @click="putrecs" :disabled = "opbtflg == 1">Upoad</button></div> -->
+    <!-- <div class="dwnload"><button @click="getrecs" :disabled = "opbtflg == 1">Download</button></div> -->
   </div>
-
-    <h1>{{ msg }}</h1>
-    <input type="text" v-model="stkd.mfg" placeholder="MFG">
-    <input type="text" v-model="stkd.icode" placeholder="ICODE">
-    <input type="text" v-model="stkd.asize" placeholder="ASIZE">
-    <input type="text" v-model="stkd.qty" placeholder="QTY">
-    <input type="text" v-model="stkd.loc" placeholder="LOCATION">
-    <input type="text" v-model="stkd.pg" placeholder="PAGE">
-    <button @click="sndData">Send</button>
   </div>
 </template>
 
@@ -78,6 +69,7 @@ export default {
   },
   data: function() {
     return {
+      ediid : 0, 
       sel:0,
       dsblflg : 1,
       opbtflg : 0,
@@ -154,7 +146,7 @@ export default {
       })
     },
       inirec : function() {
-   let ptr = this.rec ;
+   let ptr = this.stkd ;
    ptr.id = 0;
    ptr.mfg = '';
    ptr.icode= "";
@@ -165,18 +157,31 @@ export default {
    ptr.dt= "";
   },
   savit:function(){
-  debugger ;
-    let idx = this.rec.id ;
+    if(this.ediid = 0){
+      // add the stkd record
+    } else {
+      // update the stkd record
+
+    }
+    // old code below should be deleted
+/*  debugger ;
+    let idx = this.stkd.id ;
     if (idx == 0){
       this.recs.push({}) ;
       idx = this.recs.length - 1 ;
       this.rec.id = idx ;
     }
     this.trsftoar(idx)   
+    */
+    this.dsblflg = 1 ;
+    this.opbtflg = 0 ;
+    
+  },
+  cancit:function(){
     this.dsblflg = 1 ;
     this.opbtflg = 0 ;
   },
-  cancit:function(){},
+/*
   trsftoar: function(idx){
    let tmp = this.recs[idx] ;
    let r = this.rec ;
@@ -203,8 +208,10 @@ export default {
    r.loc = tmp.loc;
    r.dt = tmp.dt;
   },
+  */
   addrec: function(){
    console.log("Adding..")
+   this.ediid = 0 // make sure to flag editing of a record
    this.inirec();
    this.dsblflg = 0 ;
    this.opbtflg = 1 ;
@@ -212,13 +219,28 @@ export default {
   },
   edirec: function(){
    console.log("Editing..")
+   this.ediid = this.sel ;  // preserve the id of vhe selected flag for editing
    this.dsblflg = 0 ;
    this.opbtflg = 1 ;
+   // get the record from the database with the id and load it into stkd
+   // give it for editing
 
   },
   delrec: function(){
    console.log("Deleting..")
-  },
+   this.ediid = this.sel ;
+   this.dblflg = 0;
+   this.opbtflg = 1 ;
+   if (shw_alert())
+   { 
+     // delete the record 
+   }
+   // repaint the records after positioning proper offset
+
+   // restore this.ediid to 0 ;
+   this.ediid = 0 ;
+  }
+  /*
   putrecs: function(){
    console.log("Putting..")
    let mx = this.recs.length ;
@@ -235,7 +257,9 @@ export default {
    .then(function(res){})
    .catch(function(err){console.log(err)})
   }
+  */
   }
+  
 }  
 </script>
 
