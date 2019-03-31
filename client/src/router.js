@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Stock from './views/stock.vue'
+import Ttly from  './views/ttly.vue'
 
 Vue.use(Router)
 
@@ -26,6 +27,12 @@ export default new Router({
       path: '/stock',
       name: 'stock',
       component: Stock
+//      component: () => import('./views/stock.vue')
+    },
+    {
+      path: '/ttly',
+      name: 'ttly',
+      component: Ttly
 //      component: () => import('./views/stock.vue')
     }
   ]
