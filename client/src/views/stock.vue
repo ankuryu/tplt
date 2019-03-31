@@ -165,7 +165,7 @@ export default {
    ptr.dt= "";
   },
   savit:function(){
-  debugger ;
+  //debugger ;
     let idx = this.rec.id ;
     if (idx == 0){
       this.recs.push({}) ;
@@ -308,8 +308,10 @@ body {
 .inpcont {
   display: grid;
   background-color: lightcyan;
+  grid-template-columns: "repeat(4,1fr) 2fr repeat(4,1fr)";
   grid-gap: 3px;
-  grid-template-areas: " mfg icode asize qty" " loc pg dt ."  " . . save canc";
+  grid-template-areas: "mfg icode asize qty loc pg dt save canc";
+/*  grid-template-areas: " mfg icode asize qty" " loc pg dt ."  " . . save canc"; */
 }
 
 .mfg{
