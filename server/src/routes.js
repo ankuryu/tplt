@@ -2,6 +2,7 @@ const invsizeController = require('./controllers/invsizeController.js');
 const invnameController = require('./controllers/invnameController.js');
 const ldrpriController = require('./controllers/ldrpriController.js');
 const stkController = require('./controllers/stkController.js');
+const chqController = require('./controllers/chqController.js');
 
 module.exports = (app) => {
   // routes regarding asize 

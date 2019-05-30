@@ -1,10 +1,10 @@
-/* jshint  esversion: 8 */
-//ldrpriController.js
+//chqController.js
 const {
  stock,Sequelize
 } = require('../models');
 
 module.exports = {
+  //   send the max number of allowed records
   async maxRecs (req,res,next){
     try{
       let mx = await stock.findAll({
@@ -18,6 +18,7 @@ module.exports = {
       console.log("Error in maxRecs ",err )
     }
   },
+  //  send the maximumber number of records from the table  starting at offset given
   async index (req, res, next) {
     let ofst = req.params.ofst ;
     let lmt = req.params.lmt;
@@ -30,6 +31,7 @@ module.exports = {
       res.status(500).send({error: 'An Error has occuretd in fetching data from stk all records'})
     }
   },
+  /*
   async showmcs(req, res, next) {
     try {
       let mfg = req.params.mfg
@@ -63,6 +65,7 @@ module.exports = {
       res.status(500).send({error: 'An Error has occured in fetching data from stk for pg'})
     }
   },
+  */
   async post(req, res, next) {
     try {
       var stkdata= req.body
