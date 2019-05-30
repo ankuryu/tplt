@@ -26,11 +26,21 @@ module.exports = {
   },
   stk: {
     db: {
-      database: process.env.DB_NAME || 'stk19.db3',
+      database: process.env.DB_NAME || 'stk2019.db3',
       options: {
         dialect: process.env.DIALECT || 'sqlite',
         host: process.env.HOST || 'localhost',
-        storage: path.resolve(__dirname, '../../db/stk19.db3')
+        storage: path.resolve(__dirname, '../../db/stk2019.db3')
+      }
+    }
+  },
+  chq: {
+    db: {
+      database: process.env.DB_NAME || 'cheq.db3',
+      options: {
+        dialect: process.env.DIALECT || 'sqlite',
+        host: process.env.HOST || 'localhost',
+        storage: path.resolve(__dirname, '../../db/cheq.db3')
       }
     }
   }

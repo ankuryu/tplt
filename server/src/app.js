@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const { ttyseq } = require('./models')
 const { salseq } = require('./models')
 const { stkseq } = require('./models')
+const { chqseq } = require('./models');
 
 const config = require('./config/config')
 
@@ -29,6 +30,7 @@ app.use(cors())
 ttyseq.sync({force: false})
   .then(salseq.sync({force: false}))
   .then(stkseq.sync({force:false}))
+  .then(chqseq.sync({force:false}))
   .then(() => {
     app.listen(config.port)
     console.log(`Server started on port ${config.port}`)

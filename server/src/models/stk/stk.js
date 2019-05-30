@@ -2,7 +2,7 @@
 /* eslint-disable no-tabs */
 /* JSHINT ES6 VERSION */
 module.exports = (stkseq, DataTypes) => {
-  const stock = stkseq.define('stock',
+  const Stock = stkseq.define('stock',
 	  {
 	  id: { type: DataTypes.INTEGER,
 		  primaryKey: true
@@ -19,5 +19,5 @@ module.exports = (stkseq, DataTypes) => {
       timestamps: false
     }
   )
-  return stock
+  return Stock
 }

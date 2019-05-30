@@ -16,7 +16,7 @@
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "sequelize": "^4.43.0",
-    "sqlite3": "^4.0.6"
+    "sqlite3": "latest"
   },
   "devDependencies": {
     "eslint": "^4.6.0",
