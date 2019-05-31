@@ -3,6 +3,7 @@ const invnameController = require('./controllers/invnameController.js');
 const ldrpriController = require('./controllers/ldrpriController.js');
 const stkController = require('./controllers/stkController.js');
 const vndrmasController = require('./controllers/vndrmasController.js');
+const cheq19Controller = require('./contorllers/cheq19Controller.js');
 
 module.exports = (app) => {
 
@@ -67,6 +68,13 @@ module.exports = (app) => {
   app.post('/api/vndrmas',vndrmasController.post);
   app.put('/api/vndrmas/:id',vndrmasController.put);
   app.delete('/api/vndrmas/:id',vndrmasController.remove);
+
+ // routes regarding cheq19
+
+  app.get('/api/cheq19',cheq19Controller.index);
+  app.post('/api/cheq19',cheq19Controller.post);
+  app.put('/api/cheq19/:id',cheq19Controller.put);
+  app.delete('/api/cheq19/:id',cheq19Controller.remove);
 };
 
 /* const AuthenticationController = require('./controllers/AuthenticationController')
