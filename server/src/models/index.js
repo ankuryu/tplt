@@ -38,7 +38,7 @@ Object.keys(db).forEach(function (modelName) {
 
 db.salseq = salseq;
 salseq.sync();
-console.log('--------------->',config.tty)
+//console.log('--------------->',config.tty);
 const ttyseq = new Sequelize(
   config.tty.db.database,
   config.user,
@@ -46,7 +46,7 @@ const ttyseq = new Sequelize(
   config.tty.db.options
 );
 
-console.log('ttly');
+//console.log('ttly');
 fs
   .readdirSync(path.join(__dirname + '/ttly'))
   .filter((file) =>
@@ -55,7 +55,7 @@ fs
     //    file == '*.js' &&  file !== 'index.js'
   ).forEach((file) => {
     const model1 = ttyseq.import(path.join(__dirname + '/ttly', file));
-    console.log('ttly model : ', model1);
+//    console.log('ttly model : ', model1);
     db[model1.name] = model1;
   });
 
@@ -75,10 +75,10 @@ var stkseq = new Sequelize(
   config.password,
   config.stk.db.options
 ); 
- console.log(stkseq);
+// console.log(stkseq);
 } catch(err) {console.log("OUch ",err);
 }
-console.log(stkseq);
+//console.log(stkseq);
 fs
   .readdirSync(path.join(__dirname + '/stk'))
   .filter((file) =>
@@ -87,13 +87,13 @@ fs
   ).forEach((file) => {
 	  console.log('stk file:---------------->', file);
     try {
-      stkseq.authenticate().then(()=>{console.log("Connection--------------------------->")})
-        .catch((err)=>{console.log("Big ERoor-=====>",err)})
+//      stkseq.authenticate().then(()=>{console.log("Connection--------------------------->")} )
+//        .catch((err)=>{console.log("Big ERoor-=====>",err)});
     var model = stkseq.import('./stk/stk.js');
     db[model.name] = model;
    } catch(err) {console.log('BooHoo',err);
-process.exit();}
-    console.log('stk model: ', model.name);
+}
+ //   console.log('stk model: ', model.name);
   });
 //console.log(Object.keys(db))
 Object.keys(db).forEach(function (modelName) {
@@ -109,18 +109,18 @@ const chqseq = new Sequelize(
   config.password,
   config.chq.db.options
 );
-console.log('chq');
+//console.log('chq');
 fs
   .readdirSync(path.join(__dirname + '/chq'))
   .filter((file) =>
   //	  file == file
     path.extname(file) == '.js'
   ).forEach((file) => {
-	  console.log('chq file:', file);
+//	  console.log('chq file:', file);
     const model = chqseq.import(path.join(__dirname + '/chq', file));
     db[model.name] = model;
 
-    console.log('chq model: ', model.name);
+//    console.log('chq model: ', model.name);
   });
 //console.log(Object.keys(db))
 Object.keys(db).forEach(function (modelName) {

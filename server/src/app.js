@@ -1,24 +1,24 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const morgan = require('morgan')
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
 // const {sequelize} = require('./models')
 
-const { ttyseq } = require('./models')
-const { salseq } = require('./models')
-const { stkseq } = require('./models')
+const { ttyseq } = require('./models');
+const { salseq } = require('./models');
+const { stkseq } = require('./models');
 const { chqseq } = require('./models');
 
-const config = require('./config/config')
+const config = require('./config/config');
 
-const app = express()
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
+const app = express();
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(cors());
 
 // require('./passport')
 
- require('./routes')(app)
+ require('./routes')(app);
 
 /* sequelize.sync({force: false})
   .then(() => {
@@ -32,6 +32,6 @@ ttyseq.sync({force: false})
   .then(stkseq.sync({force:false}))
   .then(chqseq.sync({force:false}))
   .then(() => {
-    app.listen(config.port)
-    console.log(`Server started on port ${config.port}`)
-  })
+    app.listen(config.port);
+    console.log(`Server started on port ${config.port}`);
+  });
