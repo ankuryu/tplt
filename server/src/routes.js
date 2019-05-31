@@ -3,7 +3,7 @@ const invnameController = require('./controllers/invnameController.js');
 const ldrpriController = require('./controllers/ldrpriController.js');
 const stkController = require('./controllers/stkController.js');
 const vndrmasController = require('./controllers/vndrmasController.js');
-const cheq19Controller = require('./contorllers/cheq19Controller.js');
+const cheq19Controller = require('./controllers/cheq19Controller.js');
 
 module.exports = (app) => {
 
