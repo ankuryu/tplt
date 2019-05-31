@@ -7,7 +7,7 @@ module.exports = {
   async index(req, res, next) {
     try {
       let modelData = await invname.findAll({
-        attributes:['id']
+        attributes:['id','lcode','icode','desc','ddesc']
       })
       res.send(modelData)
     } catch (err) {
