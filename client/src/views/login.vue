@@ -6,9 +6,9 @@
 
             </v-title>
             <v-form>
-                <v-text-field v-model="name" label="Name">
+                <v-text-field v-model="name" label="Name" />
                 <v-text-field v-model="password" label = "Password" type="password" />
-                <v-btn>submit<v-btn>
+                <v-btn>submit</v-btn>
             </v-form>
             
         </v-list-item>

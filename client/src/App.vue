@@ -3,13 +3,14 @@
     <v-app-bar
       app
       color="primary"
-      dark
+      dark>
+<v-btn>Home</v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn
       flat
-      class="white--text"  
+      class="white--text" > 
       >Stock
        
         <v-icon>mdi-open-in-new</v-icon>
@@ -21,10 +22,10 @@
       <v-btn class= "ma-3 pa-3" icon
       >phone
       </v-btn>
-      <v-btn class= "ma-3 pa-3" icon router to="\login"
+      <v-btn class= "ma-3 pa-3" icon router to="/login"
       >login
       </v-btn>
-      <v-btn class= "ma-3 pa-3" icon router to="\register"
+      <v-btn class= "ma-3 pa-3" icon router to="/register"
       >Register
       </v-btn>
     </v-app-bar>
