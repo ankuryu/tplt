@@ -35,16 +35,11 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
       
-      <v-btn
-      flat
-      class="white--text"  
+      <v-btn class= "ma-3 pa-3" icon
       >About
-        <v-icon>mdi-person</v-icon>
       </v-btn>
-      <v-btn
-      flat prepend-icon="mdi-contact"
-      class="white--text"  
-      >Contacts
+      <v-btn class= "ma-3 pa-3" icon
+      >phone
         <!-- <v-icon>mdi-contact</v-icon> -->
       </v-btn>
     </v-app-bar>
