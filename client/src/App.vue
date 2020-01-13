@@ -5,7 +5,7 @@
       color="primary"
       dark
     >
-      <div class="d-flex align-center">
+      <!-- <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -23,17 +23,29 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         />
-      </div>
+      </div> -->
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
+      flat
+      class="white--text"  
+      >Stock
+       
         <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+      
+      <v-btn
+      flat
+      class="white--text"  
+      >About
+        <v-icon>mdi-person</v-icon>
+      </v-btn>
+      <v-btn
+      flat prepend-icon="mdi-contact"
+      class="white--text"  
+      >Contacts
+        <!-- <v-icon>mdi-contact</v-icon> -->
       </v-btn>
     </v-app-bar>
 

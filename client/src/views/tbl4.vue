@@ -182,7 +182,7 @@
       },
       close () {
 
-        console.log('Dialog closed')
+        //console.log('Dialog closed')
       },
     },
   }
