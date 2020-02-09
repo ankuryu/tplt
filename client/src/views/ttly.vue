@@ -71,6 +71,7 @@
 </template>
 
 <script>
+/* eslint-disable no-debugger, no-console */
 const axios = require("axios");
 export default {
   name: "ttly",

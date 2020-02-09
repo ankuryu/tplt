@@ -45,16 +45,14 @@
   </div>
 </template>
 <script>
+/* eslint-disable no-debugger, no-console */
+import  axios from 'axios'
 export default {
   data() {
     return {
       dia1: false,
       aflg: false, // flag to show adding content
       bills: [
-        { pname: "Party 1", bno: "00001", bdt: "2020/01/01", bamt: 1001 },
-        { pname: "Party 2", bno: "00002", bdt: "2020/01/01", bamt: 1001 },
-        { pname: "Party 3", bno: "00003", bdt: "2020/01/01", bamt: 1001 },
-        { pname: "Party 4", bno: "00004", bdt: "2020/01/01", bamt: 1001 }
       ],
       headers: [
         { text: "Party", value: "pname" },
@@ -63,10 +61,44 @@ export default {
         { text: "Amount", value: "bamt" }
       ],
       selected: [],
-      vtop: { pname: "", bno: "", bdt: "", bamt: 0 }
+      vtop: {id:0, pname: "", bno: "", bdt: "", bamt: 0 }
     };
   },
   methods: {
+      getinvoice: function(id){
+          if(id==0){
+              axios.get("/api/bills")
+              .then( (response)=>{
+                  this.bills = response 
+              })
+              .catch((err)=> {
+                  console.log(err)
+              })
+          } else {
+              axios.get("/api/bill/:id")
+              .then( (response)=>{})
+              .catch((err)=> {
+                  console.log(err)
+              })
+          }
+      },
+      putinvoice: function(id){
+          if(id==0){
+              axios.post("/api/bill",request)
+              .then( (response)=>{
+                  this.bills = response 
+              })
+              .catch((err)=> {
+                  console.log(err)
+              })
+          } else {
+              axios.put("/api/bill/:id")
+              .then( (response)=>{})
+              .catch((err)=> {
+                  console.log(err)
+              })
+          }
+      },
     addinvoice: function() {
       this.dia1 = true;
       this.aflg = true;
