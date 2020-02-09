@@ -59,6 +59,7 @@
 </template>
 
 <script>
+/* eslint-disable no-debugger, no-console */
   export default {
     data () {
       return {
