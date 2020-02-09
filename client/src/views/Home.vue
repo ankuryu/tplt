@@ -2,6 +2,10 @@
 <div>
 <h2>Home</h2>
   <v-data-table
+  show-select
+  single-select
+  item-key="name"
+  selectable-key="name"
     :headers="headers"
     :items="desserts"
     :items-per-page="5"
@@ -13,6 +17,7 @@
   export default {
     data () {
       return {
+        selected:[],
         headers: [
           {
             text: 'Dessert (100g serving)',

@@ -7,6 +7,7 @@ import Table2 from  './views/table2.vue'
 import Tbl3 from  './views/tbl3.vue'
 import Tbl4 from  './views/tbl4.vue'
 import Crud from  './views/crud.vue'
+import Invoice from './views/Invoice.vue'
 import register from './views/register'
 import login from './views/login'
 Vue.use(Router)
@@ -75,8 +76,13 @@ export default new Router({
       name: 'register',
       component: register
 //      component: () => import('./views/stock.vue')
-    }
-
+    },
+{
+      path: '/invoice',
+      name: 'Invoice',
+      component: Invoice
+//      component: () => import('./views/stock.vue')
+    },
 
 
 
