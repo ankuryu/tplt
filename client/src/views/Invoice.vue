@@ -103,8 +103,32 @@ export default {
       this.dia1 = true;
       this.aflg = true;
     },
-    ediinvoice: function() {},
-    delinvoice: function() {},
+    ediinvoice: function() {
+      // check if selected array has a record
+      if (this.selected.length <> 1) {
+        alert("first select a record to delete")
+      } else {
+        var tmpid = selected[0].id
+        this.bills.findIndex((el.id) => {el.id == tmpid})
+
+      }
+
+      // transfer the value to that array to the vtop rec
+
+      // set aflg false and dialog flag true
+
+
+    },
+    delinvoice: function() {
+      // check if the selected array length has 1 record
+
+      // show the data and get confirmation for deleteion
+
+      // start the actual process of removing the record from the array 
+      // as well as the backend 
+
+
+    },
     mk_obj: function() {
       return { pname: "", bno: "", bdt: "", bamt: 0 };
     },
