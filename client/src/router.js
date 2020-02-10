@@ -42,30 +42,6 @@ export default new Router({
 //      component: () => import('./views/stock.vue')
     },
     {
-      path: '/desert',
-      name: 'table2',
-      component:Table2 
-//      component: () => import('./views/stock.vue')
-    },
-    {
-      path: '/tbl3',
-      name: 'tbl3',
-      component:Tbl3
-//      component: () => import('./views/stock.vue')
-    },
-    {
-      path: '/tbl4',
-      name: 'tbl4',
-      component:Tbl4
-//      component: () => import('./views/stock.vue')
-    },
-    {
-      path: '/crud',
-      name: 'crud',
-      component:Crud
-//      component: () => import('./views/stock.vue')
-    } ,
-    {
       path: '/login',
       name: 'login',
       component: login 
