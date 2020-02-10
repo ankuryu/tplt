@@ -105,11 +105,11 @@ export default {
     },
     ediinvoice: function() {
       // check if selected array has a record
-      if (this.selected.length <> 1) {
+      if (this.selected.length != 1) {
         alert("first select a record to delete")
       } else {
         var tmpid = selected[0].id
-        this.bills.findIndex((el.id) => {el.id == tmpid})
+        var aidx = this.bills.findIndex((el.id) => {el.id == tmpid})
 
       }
 
