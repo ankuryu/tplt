@@ -108,8 +108,8 @@ export default {
       if (this.selected.length != 1) {
         alert("first select a record to delete")
       } else {
-        var tmpid = selected[0].id
-        var aidx = this.bills.findIndex((el.id) => {el.id == tmpid})
+        var tmpid = this.selected[0].id
+        var aidx = this.bills.findIndex( el => el.id == tmpid )
 
       }
 
