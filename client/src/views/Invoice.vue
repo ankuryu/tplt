@@ -50,6 +50,7 @@ import  axios from 'axios'
 export default {
   data() {
     return {
+      aidx : 0,
       dia1: false,
       aflg: false, // flag to show adding content
       bills: [
@@ -66,6 +67,7 @@ export default {
   },
   methods: {
       getinvoice: function(id){
+        var tmpar = null ;
           if(id==0){
               axios.get("/api/bills")
               .then( (response)=>{
@@ -76,24 +78,29 @@ export default {
               })
           } else {
               axios.get("/api/bill/:id")
-              .then( (response)=>{})
+              .then( (response)=>{
+                tmpar = response 
+              })
               .catch((err)=> {
                   console.log(err)
               })
           }
+          console.log(tmpar);
       },
       putinvoice: function(id){
           if(id==0){
-              axios.post("/api/bill",request)
+              axios.post("/api/bill", this.vtop)
               .then( (response)=>{
-                  this.bills = response 
+                  console.log( response )
               })
               .catch((err)=> {
                   console.log(err)
               })
           } else {
-              axios.put("/api/bill/:id")
-              .then( (response)=>{})
+              axios.put("/api/bill/:id", this.vtop)
+              .then( (response)=>{
+                console.log(response)
+              })
               .catch((err)=> {
                   console.log(err)
               })
@@ -104,12 +111,16 @@ export default {
       this.aflg = true;
     },
     ediinvoice: function() {
+      var tmpar = Object.assign(this.vtop,this.selected[0]) ;
+      console.log(tmpar) ;
+      this.aflg = false;
+      this.dia1 = true;
       // check if selected array has a record
       if (this.selected.length != 1) {
         alert("first select a record to delete")
       } else {
         var tmpid = this.selected[0].id
-        var aidx = this.bills.findIndex( el => el.id == tmpid )
+        this.aidx = this.bills.findIndex( el => el.id == tmpid )
 
       }
 
@@ -121,27 +132,40 @@ export default {
     },
     delinvoice: function() {
       // check if the selected array length has 1 record
-
+      if(this.selected.length != 1){
+        console.log("you have to select a record first")
+      } else {
       // show the data and get confirmation for deleteion
 
       // start the actual process of removing the record from the array 
       // as well as the backend 
+        var tmpid = this.selected[0].id ;
+        this.aidx = this.bills.findIndex( el => el.id == tmpid);
+        var tmpar = this.bills.splice(this.aidx,1)
 
+          console.log(tmpar);
+      }
 
     },
     mk_obj: function() {
       return { pname: "", bno: "", bdt: "", bamt: 0 };
     },
     sav_it: function() {
+      var tmp ;
       if (this.aflg) {
-        var tmp = this.mk_obj();
+        tmp = this.mk_obj();
         tmp = Object.assign(tmp, this.vtop);
+        // save the object to database and get the id
+
         this.bills.push(tmp);
       } else {
         //console.log("Editing");
+         tmp = Object.assign(this.bills[this.aidx],this.vtop);
+        tmp = null ;
       }
       //console.log(this.bills);
       this.clr_it();
+        this.aidx = 0 ;
       this.dia1 = false;
       this.aflg = false;
     },
