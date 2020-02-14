@@ -4,6 +4,8 @@
   <div>
     <v-card>
       <v-data-table
+      dense
+       @click:row="jango"
         :items="bills"
         :headers="headers"
         show-select
@@ -66,6 +68,9 @@ export default {
     };
   },
   methods: {
+    jango: function(item) {alert("hello")
+     console.log("jango",item)
+    },
       getinvoice: function(id){
         var tmpar = null ;
           if(id==0){
