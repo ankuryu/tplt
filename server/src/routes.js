@@ -4,6 +4,7 @@ const ldrpriController = require('./controllers/ldrpriController.js');
 const stkController = require('./controllers/stkController.js');
 const vndrmasController = require('./controllers/vndrmasController.js');
 const cheq19Controller = require('./controllers/cheq19Controller.js');
+const outstndController = require('./controllers/outstndController.js');
 
 module.exports = (app) => {
 
@@ -75,6 +76,12 @@ module.exports = (app) => {
   app.post('/api/cheq19',cheq19Controller.post);
   app.put('/api/cheq19/:id',cheq19Controller.put);
   app.delete('/api/cheq19/:id',cheq19Controller.remove);
+
+  // routes regardging outstanding pybls/rcvbls
+
+  app.get('/api/outs/rcv/smry/:opr', outstndController);
+
+  )
 };
 
 /* const AuthenticationController = require('./controllers/AuthenticationController')
