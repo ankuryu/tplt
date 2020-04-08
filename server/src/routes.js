@@ -81,7 +81,7 @@ module.exports = (app) => {
 
   app.get('/api/outs/rcv/smry/:opr', outstndController);
 
-  )
+  
 };
 
 /* const AuthenticationController = require('./controllers/AuthenticationController')
