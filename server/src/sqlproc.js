@@ -1,10 +1,11 @@
 const sqlite3 = require('sqlite3').verbose ;
 
 
-
 /////////////////////// start of functions ////////////////////////////
 
+
 //  Function to open a sqlte data and fetch data using the sql string
+//   ****** function ftch_sqldata() ********
    async function ftch_sqldata(db,dbpth,sqlstr,apar) {
 
 	// dbpth is the path to sqlite database ; sqlstr is the requisite SQLstring and apar is the array of parameters to be passed to sql command
@@ -49,15 +50,15 @@ const clos_db =  function(db) {
 };
  // function to query db database using query and parameters, returns a promise for async await
 
-function qry_all(db,query, body) {
+function qry_all(db,query, params) {
 		 return new Promise((resolve, reject)=> {
 			 //resolve({name:"Varnil"});
 			 
-			// if(body == undefined) body=[]
-			 console.log('In qry_all Param3',body);
-			 console.log('db ',db,'Query : ',query, ' Params ',body);
+			// if(params == undefined) params=[]
+			 console.log('In qry_all Param3',params);
+			 console.log('db ',db,'Query : ',query, ' Params ',params);
 			 debugger;
-		 	 db.all(query, body, (err, rows)=>{
+		 	 db.all(query, params, (err, rows)=>{
 				 //console.log(rows);
 					 if(err) reject("Read error: " + err.message)
 					 else resolve(rows);
@@ -65,10 +66,4 @@ function qry_all(db,query, body) {
     			}) 
 	};
 
-function jango() {
-	return new Promise((resolve,reject)=> {
-		resolve({name:"Zarnil"});
-	})
-}
-
-
+// end of the file
