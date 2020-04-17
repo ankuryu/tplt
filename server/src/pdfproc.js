@@ -31,4 +31,4 @@ const objPdf = {
 
 };
 
-export default objPdf 
+export default objPdfe
