@@ -1,20 +1,21 @@
 // file : frmPdf.js
 // Contains routines to render  form as QUO/BILL etc in PDF format
-const jsPdf = require("jsPdf");
+// const jsPdf = require("jspdf");
 // following Properties
 // doc : document for pdf object 
 // co : Company code
 // codtl :  Object containing details of the company such as name/addr/gst
 // topdtl : Details of the party as name/addr/gst
 // middtl: Detailed array  of the item/desc/size/qty/rate/disc/tax
+// const jsPdf = require("jsPdf");
 // **********Methods***************
 //
 const frmPdf = {
-  doc = null ,  //  stores the pdf document object
-  co = "",
-  codtl = null,
-  topdtl = null,
-  middtl = null,
+  doc : null ,  //  stores the pdf document object
+  co : "",
+  codtl : null,
+  topdtl : null,
+  middtl : null,
 
   //  *****************   start of the methods used for rendering the form ************ //
   // gen_doc :   Generates a new PDF document using jsPDF
@@ -24,13 +25,21 @@ const frmPdf = {
   // rndr_mid :
   // rndr_
 
-  gen_doc = function() {
-    this.doc = new jsPdf()
+  gen_doc : function() {
+    this.doc = new jsPDF()
   },
-  rndr_hdg = function(co ){
+  sav_doc : function(fn) {
+    //doc.output('save', 'filename.pdf'); //Try to save PDF as a file (not works on ie before 10, and some mobile devices)
+//doc.output('datauristring');        //returns the data uri string
+//doc.output('datauri');              //opens the data uri in current window
+//doc.output('dataurlnewwindow');     //opens the data uri in new window  <<<<---- You have to modify code for this as given belw
+
+    this.doc.output('save',fn)
+  },
+  rndr_hdg : function(co ){
 
   },
-  rndr_lns= function( ){
+  rndr_lns: function( ){
     let vdoc = this.doc ;
     // Function prints the varous lines of the forms 
     let font = 10 ;
@@ -106,7 +115,7 @@ const frmPdf = {
     // amt line
 
   },
-  rndr_lbl = function(){
+  rndr_lbl : function(){
     let vdoc = this.doc ;
     // renders the varios lables in the forms
     let font=8;
@@ -159,7 +168,7 @@ const frmPdf = {
     prn_lbl(vdoc,lbl_gtl);
 
   },
-  rndr_mid= function( ){
+  rndr_mid: function( ){
 
   },
 
@@ -180,4 +189,4 @@ function prn_fld(pdoc,ar){
 	pdoc.text(ar[0],ar[1],ar[2])
 		return pdoc;
 }
-export default frmPdf
+module.exports = frmPdf
