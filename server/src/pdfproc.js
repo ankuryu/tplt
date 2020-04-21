@@ -10,25 +10,22 @@ const chqPdf = require("chqPdf"); // library of rountines for  printing cheques
 
 
 const objPdf = {
-  fname = "",
-  pdfstr = "",   
-  doc = null ,
-  co = "PM",
-  codtl = null ,
+  fname : "",
+  pdfstr : "",   
+  doc : null ,
+  co : "PM",
+  codtl : null ,
 
 
-  gen_quo = function(){
-    this.doc = new jsPdf('p')
+  gen_quo : function(){
 
   }, 
-  gen_chq = function(){
+  gen_chq : function(){
 
   },
-  gen_vou = function() {
+  gen_vou : function() {
 
   },
-
-
 };
 
-export default objPdfe
+module.exports = objPdf
