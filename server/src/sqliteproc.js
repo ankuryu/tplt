@@ -73,6 +73,24 @@ sqlio = {
     }
   },
 
+
+  //  Query records in the database using the sqistr and dbh handle also the para array for where conditions
+  qry_all: async function(db,sql,paray){
+   let rslt = ""
+    try {
+      const dbh = await opn_db(db);
+      console.log("Opened Database : " + db);
+      rslt = await qry_all(dbh,sql,paray);
+      console.log(sql+ "Query Records Executed ! ");
+      console.log("Result",rslt)
+      await clos_db(dbh);
+      console.log(db+" Database Closed !");
+    } catch (err) {
+      console.log("Error : "+err );
+    }
+    return rslt ;
+  },
+
 //  End of the methods
 }  // End of the object sqliio
 

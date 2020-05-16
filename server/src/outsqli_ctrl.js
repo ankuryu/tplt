@@ -3,31 +3,42 @@
 //
 const sqlio = require('./sqliteproc.js')
 
+const oust = {} ;
+oust.dbpth = "./outstd.db3" ;
+
 // now open a sqlite database in memory
 const db = {}
 
-const dbpth = './outstd.db3'
+//const dbpth = ''
 
-function gt_allrcv(co) { 
+oust.gt_allrcv = function (co) { 
  // Get all receivable   
-  const sqlpth = "select * from $corcvbl; "
-  return sqlio.qry_all(dbpth,sqlstr,[]) 
+  const sqlstr = `select * from ${co}rcvbl; `
+  console.log(sqlstr)
+  let rslt = ""
+  let dbpth = oust.dbpth ;
+ sqlio.qry_all(dbpth,sqlstr,[]).then( (t)=> rslt = t ) 
+  return rslt
 }
-function gt_aselrcv(co) {
+oust.gt_aselrcv  =  function(co) {
   // Get  All slected  Reevievables 
    const sqlstr = " select * from $corcvbl where "
   return sqlio.qry_all(dbpth,sqlstr,[]) 
 }
-function gt_prtyrcv() {
+ oust.gt_prtyrcv = function() {
   // Get all recivables of a single party
 }
-function gt_psmtrcv() {
+  oust.gt_psmtrcv = function () {
   // Get all  summary total of  all parties in file
 }
-function gt_pssmtrcv() {   }
-function gt_pselrcv() {   }
+  oust.gt_pssmtrcv = function () {   }
+  oust.gt_pselrcv = function () {   }
+
+module.exports = oust ;
 
 
+
+/*
 const sqldeltbl = 'DROP TABLE IF EXISTS tmp1 ;'
 const sqlcrt = 'CREATE TABLE IF NOT EXISTS tmp1 (id integer primary key asc ,name text, tel text);'
 const sqlins = 'INSERT INTO tmp1 (name,tel ) VALUES (?,?) ;'
@@ -40,5 +51,5 @@ sqlio.run_qry(dbpth, sqldeltbl, [])
   .then(()=> sqlio.ins_rec(dbpth, sqlins, par2))
   .then(()=> sqlio.ins_rec(dbpth, sqlins, par3))
   .catch((err)=>console.log(err))
-
+*/
 
