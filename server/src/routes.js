@@ -4,7 +4,7 @@ const ldrpriController = require('./controllers/ldrpriController.js')
 const stkController = require('./controllers/stkController.js')
 const vndrmasController = require('./controllers/vndrmasController.js')
 const cheq19Controller = require('./controllers/cheq19Controller.js')
-const outstndController = require('./controllers/outstndController.js')
+const outstndController = require('./controllers/outstd/outstndController.js')
 
 module.exports = (app) => {
   // routes regarding asize
@@ -78,7 +78,7 @@ module.exports = (app) => {
 
   // routes regardging outstanding pybls/rcvbls
 
-  app.get('/api/outs/rcv/smry/:opr', outstndController)
+  app.get('/api/out/:co/:opr/all', outstndController.shwAllOutstd)
 }
 
 /* const AuthenticationController = require('./controllers/AuthenticationController')
