@@ -7,7 +7,7 @@ module.exports = {
   sls: {
     db: {
       database: process.env.DB_NAME || 'sls.db3',
-     options: {
+      options: {
         dialect: process.env.DIALECT || 'sqlite',
         host: process.env.HOST || 'localhost',
         storage: path.resolve(__dirname, '../../db/sls.db3')

@@ -28,7 +28,7 @@ module.exports = {
       res.status(500).send({error: 'An Error has occuretd in fetching data from invname icode'})
     }
   },
-  async showlcode (req, res, next) {
+  async showlcode(req, res, next) {
     try {
       let lcode = req.params.lcode
       //  console.log(qid);
@@ -44,7 +44,7 @@ module.exports = {
     }
   },
 
-  async post (req, res, next) {
+  async post(req, res, next) {
     try {
       var invnamedata = req.body
 	    console.log(invname);
@@ -54,7 +54,7 @@ module.exports = {
       res.status(500).send({error: 'An Error has occured trying to create record invname'})
     }
   },
-  async put (req, res, next) {
+  async put(req, res, next) {
     try {
       var qid = req.params.id;
       quote = req.body
@@ -68,7 +68,7 @@ module.exports = {
 
     }
   },
-  async remove (req, res, next) {
+  async remove(req, res, next) {
     try {
       let qid = req.params.id
       // console.log(qid);

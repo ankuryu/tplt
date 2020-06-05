@@ -5,7 +5,7 @@ const {
 
 module.exports = {
   //   send the max number of allowed records
-  async maxRecs (req,res,next){    // jshint ignore:line
+  async maxRecs(req,res,next){    // jshint ignore:line
     try{
       let mx = await cheq19.findAll({
         attributes:[[ Sequelize.fn('sum',1),'max']]
