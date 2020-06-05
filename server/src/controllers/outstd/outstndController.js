@@ -1,6 +1,7 @@
-const sqlio = require('.sqliteproc.js');
+console.log(module.filename)
+const sqlio = require('../../sqliteproc.js');
 const db = {};
-const dbpth = './outstd.db3'
+const dbpth = '@/../db/outstd.db3'
 
 module.exports = {
   async shwAllOutstd (req,res) {
