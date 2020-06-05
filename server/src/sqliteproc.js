@@ -12,7 +12,8 @@ sqlio = {
  // Run a sql query  on db database, using paray array of params 
   run_qry: async function(db,sql,paray) {
     let rv = false 
-
+    if(typeof(paray)=='undefined' ) paray=[]
+    console.log("Array : ",paray)
     try {
       const dbh = await opn_db(db);
       console.log("Opened Database : " + db);
@@ -31,6 +32,7 @@ sqlio = {
   //  Insert a record into the database using sqlstr and dbh handle  also the parameter array
   ins_rec: async function(dbpth,sqlstr,apar){ // db is the db hndl sql is inserty sql query paray is array of parameters
 
+    if(typeof(apar)=='undefined' ) apar=[]
     try {
       const dbh = await opn_db(dbpth);
       console.log("Opened Database : " + dbpth);
@@ -46,6 +48,7 @@ sqlio = {
   // Update a record in the database using the sqlistr and dbh handl also the para array for values to update
   upd_rec: async function(dbpth,sqlstr,apar){
 
+    if(typeof(apar)=='undefined' ) apar=[]
     try {
       const dbh = await opn_db(dbpth);
       console.log("Opened Database : " + dbpth);
@@ -61,6 +64,7 @@ sqlio = {
   //  Delete a record in the database using the sqistr and dbh handle also the para array for where conditions
   del_rec: async function(db,sql,paray){
 
+    if(typeof(paray)=='undefined' ) paray=[]
     try {
       const dbh = await opn_db(db);
       console.log("Opened Database : " + db);
@@ -77,6 +81,7 @@ sqlio = {
   //  Query records in the database using the sqistr and dbh handle also the para array for where conditions
   qry_all: async function(db,sql,paray){
    let rslt = ""
+    if(typeof(paray)=='undefined' ) paray=[]
     try {
       const dbh = await opn_db(db);
       console.log("Opened Database : " + db);

@@ -15,7 +15,8 @@ module.exports = {
       sqlstr = "Select * from " + co + "pybl ;"
     }
     try {
-     let rslt =  await sqlio.run_qry(dbpth,sqlstr)
+     let rslt =  await sqlio.qry_all(dbpth,sqlstr)
+      console.log(rslt)
       res.send = rslt ;
       res.status(200);
 
