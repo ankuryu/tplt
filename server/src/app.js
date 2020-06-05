@@ -1,3 +1,7 @@
+
+var path = require('path');
+ global.appRoot = path.resolve(__dirname);
+console.log(global.appRoot)
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
