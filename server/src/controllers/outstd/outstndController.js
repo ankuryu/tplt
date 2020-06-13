@@ -16,7 +16,7 @@ module.exports = {
     }
     try {
      let rslt =  await sqlio.qry_all(dbpth,sqlstr)
-      console.log(rslt)
+//      console.log(rslt)
       res.send = rslt ;
       res.status(200);
 
