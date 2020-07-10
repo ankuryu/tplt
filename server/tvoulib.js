@@ -1,12 +1,17 @@
 
 const fs = require('fs');
 const flow = require('xml-flow') ;
+
+// Start of object tvou
+
 const tvou = {
-  vous : [],
-  json = "" ,
-  xmlstr = "" ,
-  fname = "tallvoutst.xml",
-  preamb =  `<ENVELOPE>
+  vous : [],  // array of vouchers
+  vou : null,  // voucher object
+  json : "" , // json output
+  xmlstr : "" , // xmlstr output
+  fname : "tallvoutst.xml",  // save the xml under this filename
+  // Preamble required for tally  import/xeport
+  preamb :  `<ENVELOPE>
          <HEADER>
          <TALLYREQUEST>Import Data</TALLYREQUEST> 
          </HEADER>
@@ -19,14 +24,29 @@ const tvou = {
          </STATICVARIABLES>
          </REQUESTDESC>
          - <REQUESTDATA>` ,
-  endamb =   `</REQUESTDATA>
+  // endabbmle  required for tally export /import
+  
+  endamb :   `</REQUESTDATA>
          </IMPORTDATA>
          </BODY>
          </ENVELOPE>`,
 
+  /////////////////////////////////////////////////////////////////////////////
+  //                    Methods                                              //
+  //                                                                         //
+  ////////////////////////////////////////////////////////////////////////////
+  
+add_vou() {},
+
+
+
+
 }  // end of object tvou 
 
-// start of functions 
+  /////////////////////////  OBJECT  END  //////////////////////////////////
+
+
+////////////////////////// start of functions //////////////////////////////
 
 
 function tlyopr(tvtyp,topr ) {
