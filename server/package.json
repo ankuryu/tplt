@@ -16,7 +16,7 @@
     "express": "^4.17.1",
     "jspdf": "^1.5.3",
     "morgan": "^1.9.1",
-    "sequelize": "^4.44.3",
+    "sequelize": "^5.15.1",
     "sqlite3": "latest",
     "xml-flow": "^1.0.4"
   },
