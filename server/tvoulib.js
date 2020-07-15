@@ -45,7 +45,7 @@ const tvou = {
   out_jsn() {
     this.json = "[\n";
     for(i=0;i<= this.ttlv;i++){
-      this.vou = vous[i];
+      this.vou = this.vous[i];
       this.json += JSON.stringify(this.vou);
       this.json += "\n]"
     }
@@ -53,9 +53,11 @@ const tvou = {
 
 
   out_xml() {
+    this.xmlstr = ""
     for(i=0;i<= this.ttlv;i++){
-      this.vou = vous[i];
+      this.vou = this.vous[i];
       this.xmlstr = flow.toXml(this.vou,{indent:' '}) ;
+      console.log(this.xmlstr)
     }
   }, // end of method out_xml
 
@@ -69,8 +71,13 @@ const tvou = {
       console.log("The file was saved !!" ) ;
     });
   }, // end of wr_file method
+  new_vou(tvtyp,topr){
+    let tmpvou = new tlyopr(tvtyp,topr)
+    return tmpvou ;
+  },
+}  // end of object tvou 
 
-  tlyopr(tvtyp,topr ) {
+function  tlyopr(tvtyp,topr ) {
     arvtyp = ['sales','purchase','payment','receipt','journal','contra'];
     aropr =  ['create','edit','delete'] ;
     if(arvtyp.indexOf(tvtyp) < 0 ){
@@ -113,7 +120,6 @@ const tvou = {
 
 
 
-}  // end of object tvou 
 
 /////////////////////////  OBJECT  END  //////////////////////////////////
 

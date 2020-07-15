@@ -8,7 +8,7 @@ const tlylib = require('./tvoulib.js');
 //  Testing area 
 
 console.log('Starting .......');
-vouch1 = new tlylib.tlyopr('sales','create');
+vouch1 = tlylib.new_vou('sales','create');
 
 console.log(vouch1.tvou.voucher) ;
 vouch1.add_le('Party 1',-118);
@@ -18,13 +18,13 @@ vouch1.add_le('GST 18% Tax',18) ;
 
 tlylib.add_vou(vouch1); // add the voucher to the list
 
-
+console.log("Vouchers:",tlylib.vous)
 tlylib.out_jsn() ;
 tlylib.out_xml() ;
 //vouch1.wr_file() ;
 
-console.log(vouch1.json);
-console.log(vouch1.xmlstr);
+console.log(tlylib.json);
+console.log(tlylib.xmlstr);
 
 
 // end of testing area
