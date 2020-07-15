@@ -6,7 +6,8 @@ const flow = require('xml-flow') ;
 
 const tvou = {
   vous : [],  // array of vouchers
-  vou : null,  // voucher object
+  vou : null,  // voucher objectoi
+  ttlv : 0,  //  totoal nomber of vouchers
   json : "" , // json output
   xmlstr : "" , // xmlstr output
   fname : "tallvoutst.xml",  // save the xml under this filename
@@ -25,7 +26,7 @@ const tvou = {
          </REQUESTDESC>
          - <REQUESTDATA>` ,
   // endabbmle  required for tally export /import
-  
+
   endamb :   `</REQUESTDATA>
          </IMPORTDATA>
          </BODY>
@@ -35,62 +36,31 @@ const tvou = {
   //                    Methods                                              //
   //                                                                         //
   ////////////////////////////////////////////////////////////////////////////
-  
-add_vou() {},
+
+  add_vou(tvou) {
+    this.vous.push(tvou) ;
+    this.ttlv = this.vous.length
+  },
+
+  out_jsn() {
+    this.json = "[\n";
+    for(i=0;i<= this.ttlv;i++){
+      this.vou = vous[i];
+      this.json += JSON.stringify(this.vou);
+      this.json += "\n]"
+    }
+  }, // end of methods out_jsn
 
 
+  out_xml() {
+    for(i=0;i<= this.ttlv;i++){
+      this.vou = vous[i];
+      this.xmlstr = flow.toXml(this.vou,{indent:' '}) ;
+    }
+  }, // end of method out_xml
 
 
-}  // end of object tvou 
-
-  /////////////////////////  OBJECT  END  //////////////////////////////////
-
-
-////////////////////////// start of functions //////////////////////////////
-
-
-function tlyopr(tvtyp,topr ) {
-  arvtyp = ['sales','purchase','payment','receipt','journal','contra'];
-  aropr =  ['create','edit','delete'] ;
-  if(arvtyp.indexOf(tvtyp) < 0 ){
-    console.log("Invalid Voucher Type");
-    return null ;
-  }// end of if arvtyp
-  if(aropr.indexOf(topr) < 0 ) {
-    console.log("Invalid Opreation");
-    return  null ;
-  } // end of invalid operation check
-  this.tvou = new tlymsgvou(tvtyp,topr);
-  this.totamt = 0 ;  // total of  all ale in the voucher tvou 
-  this.lec = 0 ;  //  count of the ale  in the voucher 
-  //   Methods
-  //   this.addle method
-  this.add_le = function(ldgname,amt) {
-
-    var vch = this.tvou.voucher ;
-    this.lec = vch.allledgerentrieslist.length; 
-    if(amt != 0){
-      var alej = new ale(ldgname,amt) ;
-      this.tvou.voucher.allledgerentrieslist.push(alej);
-      this.totamt =+ amt ;
-      if(this.lec == 0 ) {  //  check if it is the first item
-        vch.partyledgername =  ldgname ;
-
-      } // end of if first ale
-    } // end of if
-
-  };  // end of method  add_le
-  this.out_jsn = function() {
-    this.json = JSON.stringify(this.tvou);
-  }; // end of methods out_jsn
-
-
-  this.out_xml = function() {
-    this.xmlstr = flow.toXml(this.tvou,{indent:' '}) ;
-  }; // end of method out_xml
-
-
-  this.wr_file = function() {
+  wr_file() {
     fs.writeFile(this.fname,this.preamb + this.xmlstr + this.endamb ,function(err) {
       if(err){ 
         console.log(err);
@@ -98,30 +68,69 @@ function tlyopr(tvtyp,topr ) {
       }
       console.log("The file was saved !!" ) ;
     });
-  }; // end of wr_file method
+  }, // end of wr_file method
+
+  tlyopr(tvtyp,topr ) {
+    arvtyp = ['sales','purchase','payment','receipt','journal','contra'];
+    aropr =  ['create','edit','delete'] ;
+    if(arvtyp.indexOf(tvtyp) < 0 ){
+      console.log("Invalid Voucher Type");
+      return null ;
+    }// end of if arvtyp
+    if(aropr.indexOf(topr) < 0 ) {
+      console.log("Invalid Opreation");
+      return  null ;
+    } // end of invalid operation check
+    this.tvou = new tlymsgvou(tvtyp,topr);
+    this.totamt = 0 ;  // total of  all ale in the voucher tvou 
+    this.lec = 0 ;  //  count of the ale  in the voucher 
+    //   Methods
+    //   this.addle method
+    this.add_le = function(ldgname,amt) {
+
+      var vch = this.tvou.voucher ;
+      this.lec = vch.allledgerentrieslist.length; 
+      if(amt != 0){
+        var alej = new ale(ldgname,amt) ;
+        this.tvou.voucher.allledgerentrieslist.push(alej);
+        this.totamt =+ amt ;
+        if(this.lec == 0 ) {  //  check if it is the first item
+          vch.partyledgername =  ldgname ;
+
+        } // end of if first ale
+      } // end of if
+
+    };  // end of method  add_le
+    this.st_dtls = function(dt,vno,nar) {
+      var	vch = this.tvou.voucher ;
+      vch.date = dt ;
+      vch.vouchernumber = vno ;
+      vch.narration = nar ;
+
+    };
+
+  } // end of tlyopr  object
 
 
-  this.st_dtls = function(dt,vno,nar) {
-    var	vch = this.tvou.voucher ;
-    vch.date = dt ;
-    vch.vouchernumber = vno ;
-    vch.narration = nar ;
 
-  };
+}  // end of object tvou 
 
-} // end of tlyopr  object
+/////////////////////////  OBJECT  END  //////////////////////////////////
 
 
-function tlymsgvou(vtyp,act) {
-  this.$name = "tallymessage" ;
-  this.$attrs = {xmlns:UDF='TallyUDF' }; 
-  var oattr = new  tlyvattr(vtyp,act);
-  /* {
+////////////////////////// start of functions //////////////////////////////
+
+
+  function tlymsgvou(vtyp,act) {
+    this.$name = "tallymessage" ;
+    this.$attrs = {xmlns:UDF='TallyUDF' }; 
+    var oattr = new  tlyvattr(vtyp,act);
+    /* {
      "xmlns:udf":"TallyUDF"
      } ; */
-  this.voucher = new tlyvou(oattr) ;
+    this.voucher = new tlyvou(oattr) ;
 
-} //  end of function for creating  tlyvou	
+  } //  end of function for creating  tlyvou	
 
 
 function tlyvattr(vtyp,act) {
