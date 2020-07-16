@@ -44,9 +44,9 @@ const tvou = {
 
   out_jsn() {
     this.json = "[\n";
-    for(i=0;i<= this.ttlv;i++){
-      this.vou = this.vous[i];
-      this.json += JSON.stringify(this.vou);
+    for(i=0;i < this.ttlv;i++){
+      let jsonobj = this.vous[i].tvou;
+      this.json += JSON.stringify(jsonobj);
       this.json += "\n]"
     }
   }, // end of methods out_jsn
@@ -54,9 +54,9 @@ const tvou = {
 
   out_xml() {
     this.xmlstr = ""
-    for(i=0;i<= this.ttlv;i++){
-      this.vou = this.vous[i];
-      this.xmlstr = flow.toXml(this.vou,{indent:' '}) ;
+    for(i=0;i < this.ttlv;i++){
+      let xmltmp = this.vous[i].tvou;
+      this.xmlstr = flow.toXml(xmltmp,{indent:' '}) ;
       console.log(this.xmlstr)
     }
   }, // end of method out_xml
