@@ -4,7 +4,11 @@ mm.good_bye();
 console.log(mm); 
 jj =  mm.create_greeter("de")
 console.log("jj")
-console.log(jj)
-jj.language = 'en'
+jj.language = 'jp'
+console.log(jj.language)
 console.log("ooh")
-console.log(jj.greet('jp'))
+ var rv =  jj.greet("tn")
+console.log("return ",rv)
+console.log(jj.greet("en"))
+jj.greet.language = "jp"
+console.log(jj.greet("de"))

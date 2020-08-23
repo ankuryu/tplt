@@ -10,7 +10,8 @@ exports.good_bye = function() {
 
 function Greeter (lang) { 
   this.language = lang; 
-  this.greet = function () { 
+  this.greet = function (ln) {
+    this.language = ln ;
     switch (this.language) {
       case "en": return "Hello!"; 
       case "de": return "Hyllo!"; 
