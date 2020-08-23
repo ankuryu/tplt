@@ -5002,9 +5002,9 @@ lodash.values@^4.3.0:
   integrity sha1-o6bCsOvsxcLLocF+bmIP6BtT00c=
 
 lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.3.0:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -5279,10 +5279,10 @@ minipass@^3.0.0, minipass@^3.1.1:
   dependencies:
     yallist "^4.0.0"
 
-miragejs@^0.1.34:
-  version "0.1.34"
-  resolved "https://registry.yarnpkg.com/miragejs/-/miragejs-0.1.34.tgz#1165ed9b98b0c1543f64d19f497d7a66ea464be3"
-  integrity sha512-HjSM7tGutIAyIFFxClkbeFQSJuRz5AyydLXeR5TAeD/T+Ud6JZyqS2/SJyInSbO03y6TN5fV3XHf+6ZajVPBrg==
+miragejs@^0.1.38:
+  version "0.1.40"
+  resolved "https://registry.yarnpkg.com/miragejs/-/miragejs-0.1.40.tgz#5bcba7634312c012748ae7f294e1516b74b37182"
+  integrity sha512-7zxIcynzdS6425KZ2+TWD6F6DqESorulSDW2QBXf4iKyVn/J5vSielcubAK8sTKUefTPCrSRi7PwgNOb0JlmIg==
   dependencies:
     "@miragejs/pretender-node-polyfill" "^0.1.0"
     inflected "^2.0.4"
@@ -5309,7 +5309,7 @@ miragejs@^0.1.34:
     lodash.uniq "^4.5.0"
     lodash.uniqby "^4.7.0"
     lodash.values "^4.3.0"
-    pretender "3.3.1"
+    pretender "^3.4.3"
 
 mississippi@^3.0.0:
   version "3.0.0"
@@ -6439,14 +6439,13 @@ prepend-http@^1.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-pretender@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/pretender/-/pretender-3.3.1.tgz#74a188b0786601959ee8ffaefc9230d24fa7fa5b"
-  integrity sha512-fFtl0bfW1ay6zMGqok2Lkhpz8yjm8Pdk+fsQAX+Aeqw0LKZNaDs2VQt8qEKTNWvs5UKVUwNfcuHjVmuG7rZKhQ==
+pretender@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/pretender/-/pretender-3.4.3.tgz#a3b4160516007075d29127262f3a0063d19896e9"
+  integrity sha512-AlbkBly9R8KR+R0sTCJ/ToOeEoUMtt52QVCetui5zoSmeLOU3S8oobFsyPLm1O2txR6t58qDNysqPnA1vVi8Hg==
   dependencies:
     fake-xml-http-request "^2.1.1"
     route-recognizer "^0.3.3"
-    whatwg-fetch "^3.0.0"
 
 prettier@^1.18.2:
   version "1.19.1"
@@ -8349,11 +8348,6 @@ websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
   integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
-
-whatwg-fetch@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
-  integrity sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==
 
 which-module@^2.0.0:
   version "2.0.0"
