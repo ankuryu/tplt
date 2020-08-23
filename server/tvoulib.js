@@ -54,9 +54,9 @@ const tvou = {
 
   out_xml() {
     this.xmlstr = ""
-    for(i=0;i < this.ttlv;i++){
+    for(i=0;i <  this.ttlv;i++){
       let xmltmp = this.vous[i].tvou;
-      this.xmlstr = flow.toXml(xmltmp,{indent:' '}) ;
+      this.xmlstr = this.xmlstr + "\n"+ flow.toXml(xmltmp,{indent:' '}) ;
       console.log(this.xmlstr)
     }
   }, // end of method out_xml
