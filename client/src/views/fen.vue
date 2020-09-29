@@ -14,7 +14,9 @@
           <v-card-text>
             <v-container>
               <v-row>
-                <v-col xs12> </v-col>
+                <v-col xs12 md6 >
+<v-data-table :headers="headers" :items="fens"></v-data-table>
+                     </v-col>
               </v-row>
             </v-container>
           </v-card-text>
@@ -70,8 +72,14 @@ export default {
       aflg: false,
       opf: false,
       dashboard: "Dash",
-      /* fens: [],
-      fitms: [],
+      hdfen:[""],
+       fitms: [],
+      fens: [
+        { fno: 1, vndr: "Vndr1", bno: "0123", bdt: "2020-09-20", bamt: 3390 },
+        { fno: 2, vndr: "Vndr2", bno: "9939", bdt: "2020-09-20", bamt: 4010 },
+        { fno: 3, vndr: "Vndr3", bno: "3974", bdt: "2020-09-20", bamt: 3100 },
+        { fno: 4, vndr: "Vendor Jagdamba", bno: "2341", bdt: "2020-09-20", bamt: 1030 },
+      ],
       fen: { fno: 0, vndr: "", bno: "", bdt: "", bamt: 0 },
       itm: {
         hsn: "",
@@ -93,11 +101,22 @@ export default {
         bno: "",
         bdt: "",
         bamt: 0,
-      },*/
+      },
     };
   },
   methods: {},
-  computed: {},
+  computed: {
+      headers(){
+    return [
+        {text:"Fen",value:"fno"},
+        {text:"Vendor",value:"vndr"},
+        {text:"Bno",value:"bno"},
+        {text:"Bdt",value:"bdt"},
+        {text:"Bamt",value:"bamt"}
+
+    ]
+      }
+  },
 };
 </script>
 
