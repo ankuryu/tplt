@@ -7,6 +7,7 @@ import Ttly from  './views/ttly.vue'
 //import Tbl3 from  './views/tbl3.vue'
 //import Tbl4 from  './views/tbl4.vue'
 //import Crud from  './views/crud.vue'
+import Fen from './views/fen.vue'
 import Invoice from './views/Invoice.vue'
 import register from './views/register'
 import login from './views/login'
@@ -33,35 +34,31 @@ export default new Router({
       path: '/stock',
       name: 'stock',
       component: Stock
-//      component: () => import('./views/stock.vue')
     },
     {
       path: '/ttly',
       name: 'ttly',
       component: Ttly
-//      component: () => import('./views/stock.vue')
     },
     {
       path: '/login',
       name: 'login',
       component: login 
-//      component: () => import('./views/stock.vue')
     } ,
     {
       path: '/register',
       name: 'register',
       component: register
-//      component: () => import('./views/stock.vue')
     },
 {
       path: '/invoice',
       name: 'Invoice',
       component: Invoice
-//      component: () => import('./views/stock.vue')
     },
-
-
-
-
+{
+      path: '/fen',
+      name: 'Fen',
+      component: Fen 
+    }
   ]
 })

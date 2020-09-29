@@ -9,7 +9,6 @@
       <v-spacer></v-spacer>
 
       <v-btn
-      flat
       class="white--text" > 
       >Stock
        

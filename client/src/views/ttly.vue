@@ -155,13 +155,7 @@ export default {
       // update the stkd record
 
       }
-     // old code below should be deleted
-    
-     this.trsftoar(idx)   
-    
-     this.dsblflg = 1 ;
-     this.opbtflg = 0 ;
-     
+   
     },
     cancit:function(){
       this.dsblflg = 1 ;
@@ -189,7 +183,7 @@ export default {
       this.ediid = this.sel ;
       this.dblflg = 0;
       this.opbtflg = 1 ;
-      if (shw_alert())
+      if (this.shw_alert("Delete it ?"))
       { 
         // delete the record 
       }
@@ -200,7 +194,7 @@ export default {
     },
     shw_alert : function (msg){
 
-
+      alert(msg);
     }
   }
 };
