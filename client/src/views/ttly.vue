@@ -7,13 +7,15 @@
       <div class="tbllnam">Last Name</div>
       <div class="tblmbl">Mobile</div>
       <div class="tblsel">Sel</div>
-      <template v-for="(irec,index) in recs">
+      <template >
+        <div v-for="(irec,index) in recs" :key="index">
         <div class="tblsr">{{index+1}}</div>
         <div class="tblfnam">{{irec.fname}}</div>
         <div class="tbllnam">{{irec.lname}}</div>
         <div class="tblmbl">{{irec.mbl}}</div>
         <div class="tblsel">
           <input type="radio" v-model="sel" :value="index">
+        </div>
         </div>
       </template>
     </div>
@@ -147,7 +149,7 @@ export default {
       ptr.dt= "";
     },
     savit:function(){
-      if(this.ediid = 0){
+      if(this.ediid == 0){
       // add the stkd record
       } else {
       // update the stkd record

@@ -14,7 +14,8 @@
     <div class="tblpg">Page</div>
     <div class="tbldt">Date</div>
     <div class="tblsel">Sel</div>
-    <template v-for="(irec,index) in stkds">
+    <template >
+      <div v-for="(irec,index) in stkds" :key="index">
       <div class="tblsr">{{index+1}}</div>
       <div class="tblmfg">{{irec.mfg}}</div>
       <div class="tblicode">{{irec.icode}}</div>
@@ -24,6 +25,7 @@
       <div class="tblpg">{{irec.pg}}</div>
       <div class="tbldt">{{irec.dt}}</div>
       <div class="tblsel"><input type="radio" v-model="sel" :value="irec.id" @change="trsffrar(index)"></div>
+      </div>
     </template>
   </div>
   <button @click="prvPage">Prev</button> 
