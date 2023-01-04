@@ -15,9 +15,9 @@
     "vuetify": "^2.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^4.1.1",
+    "@vue/cli-service": "^5.0.8",
     "miragejs": "^0.1.38",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
